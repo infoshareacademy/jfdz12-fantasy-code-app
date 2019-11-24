@@ -1,0 +1,23 @@
+[
+    {
+    "id":1,
+    "nick":"adam",
+    "email":"asd@wp.pl",
+    "favouriteGames":[1,2,3],
+    "levelID":1
+    },
+    {
+    "id":2,
+    "nick":"michal",
+    "email":"asd@wp.pl",
+    "favouriteGames":[1,2,3],
+    "levelID":4
+    },
+    {
+    "id":3,
+    "nick":"kuba",
+    "email":"asd@wp.pl",
+    "favouriteGames":[1,2,3],
+    "levelID":3
+    }
+]

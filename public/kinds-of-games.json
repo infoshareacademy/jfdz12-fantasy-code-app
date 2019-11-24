@@ -1,0 +1,18 @@
+[
+    {
+        "kindID":1,
+        "kindName":"bitewna"
+    },
+    {
+        "kindID":2,
+        "kindName":"karciana"
+    },
+    {
+        "kindID":3,
+        "kindName":"planszowa"
+    },
+    {
+        "kindID":4,
+        "kindName":"imprezowa"
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name":"noob",
+        "value": 1
+    },
+    {
+        "id": 2,
+        "name":"Filthy casual",
+        "value": 2
+    },
+    {
+        "id": 3,
+        "name":"Nerd",
+        "value":3
+    },
+    {
+        "id": 4,
+        "name":"neck Beard",
+        "value": 4
+    }
+]
