@@ -5,9 +5,7 @@ import {Home} from './menu/home/index'
 function App() {
   return (
     <div >
-      <Home>
-        
-      </Home>
+      <Home />
     </div>
   );
 }
