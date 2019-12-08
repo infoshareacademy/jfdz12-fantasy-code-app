@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import {
-  PieChart, Pie, Sector, Cell,
+  PieChart, Pie, Sector, Cell, Legend
 } from 'recharts';
 
 const data = [
@@ -34,7 +34,8 @@ export default class GamesChart extends PureComponent {
     return (
       <div>
         Games played last month chart
-        <PieChart width={500} height={500}>
+        <PieChart width={500} height={450}>
+          <Legend verticalAlign="top" height={50}/>
           <Pie
             data={data}
             cx={200}
