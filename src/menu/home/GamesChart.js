@@ -10,7 +10,7 @@ const data = [
   { name: 'GamesOther', value: 5 },
 ];
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['#0088FE', '#00E49F', '#8884d8', '#82ca9d'];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -35,14 +35,14 @@ export default class GamesChart extends PureComponent {
       <div>
         Games played last month chart
         <PieChart width={500} height={450}>
-          <Legend verticalAlign="top" height={50}/>
+          <Legend verticalAlign="top" height={30}/>
           <Pie
             data={data}
             cx={200}
             cy={200}
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={200}
+            outerRadius={190}
             fill="#8884d8"
             dataKey="value"
           >

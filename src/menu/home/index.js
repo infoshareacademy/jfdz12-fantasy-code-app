@@ -6,13 +6,17 @@ import { Container, Row, Col } from 'react-bootstrap';
 export function Home() {
     return (
         <div>
-            <Container>
-                <Row>
-                    <Col lg={true} >Welcome to Board App! Feel free to look around!</Col>
+            <Container className='container-fluid'>
+                <Row className='row justify-content-around bg-secondary text-white'>
+                    <Col>Welcome to Board App! Feel free to look around!</Col>
                 </Row>
-                <Row>
-                    <Col lg={true} ><GamesChart /></Col>
-                    <Col lg={true} ><UsersChart /></Col>
+                <Row className='p-3 mb-2 bg-light text-secondary'>
+                    <Col>
+                        <GamesChart />
+                    </Col>
+                    <Col>
+                        <UsersChart />
+                    </Col>
                 </Row>
             </Container>
         </div>
