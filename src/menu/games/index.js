@@ -51,6 +51,7 @@ import {Grid, Container} from '@material-ui/core';
     displayGameKind(){
         const classes = this.props.classes
         console.log(this.state.games)
+        console.log(classes)
             return(this.state.games.map(
                 game=>
                 <Grid item xs={3}>
@@ -66,7 +67,7 @@ import {Grid, Container} from '@material-ui/core';
                       <MoreVertIcon />
                     </IconButton>
                   }
-                  title="Shrimp and Chorizo Paella"
+                  title={game.title}
                   subheader="September 14, 2016"
                 />
                 <CardMedia
