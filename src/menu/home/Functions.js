@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Functions () {
+export default function Functions () {
     return (
         <div>
             <div>Choose game</div>

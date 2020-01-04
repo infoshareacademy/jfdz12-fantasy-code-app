@@ -1,5 +1,5 @@
 import React from 'react';
-import { Functions } from './Functions';
+import Functions from './Functions';
 import UsersChart from './UsersChart';
 import GamesChart from './GamesChart';
 
