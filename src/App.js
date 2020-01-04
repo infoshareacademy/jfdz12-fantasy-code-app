@@ -1,21 +1,14 @@
 import React from 'react';
 import './App.css';
-import {Navbar} from './navbar/index';
-import {FavouriteListOfGames} from './profil/Personal-info/favourite-games';
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
-
+import GameCard from "./menu/games/index"
+import { Home } from './menu/home/index'
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar></Navbar>
-      <Switch>
-        <Route 
-          path="/profil/personal/favourite-games"
-          component={FavouriteListOfGames}
-        />
-        <Redirect to="/"/>
-      </Switch>
-    </BrowserRouter>
+    <div >
+      <GameCard/>
+      <Home />
+
+    </div>
   );
 }
 
