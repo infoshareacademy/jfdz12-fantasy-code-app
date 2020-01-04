@@ -3,7 +3,6 @@ import React from "react";
 import { withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
@@ -54,12 +53,12 @@ import {Grid, Container} from '@material-ui/core';
         console.log(classes)
             return(this.state.games.map(
                 game=>
-                <Grid item xs={3}>
-                <Card className={classes.card}>
+                <Grid  item xs={3}>
+                <Card key={game.id} className={classes.card}>
                 <CardHeader
                   avatar={
                     <Avatar aria-label="game" className={classes.avatar}>
-                      {game.title}
+                      {game.id}
                     </Avatar>
                   }
                   action={
@@ -68,16 +67,27 @@ import {Grid, Container} from '@material-ui/core';
                     </IconButton>
                   }
                   title={game.title}
-                  subheader="September 14, 2016"
+                  subheader={game.date}
                 />
-                <CardMedia
-                  className={classes.media}
-                  image="/static/images/cards/paella.jpg"
-                  title="Paella dish"
-                />
+               
                 <CardContent>
+                    <ul>
+                      <li>
+                        Gracze: {game.palyer.current}/ {game.palyer.max}
+                      </li>
+                      <li>
+                        Wymagany poziom: {game.ReqLevelID}
+                      </li>
+                      <li>
+                        Miasto: {game.localization.city}
+                      </li>
+                      <li>
+                        Miejsce: {game.localization.place}
+                      </li>
+                    </ul>
+                    
                   <Typography variant="body2" color="textSecondary" component="p">
-                    {game.date}
+                    
                   </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
