@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import GameCard from "./menu/games/index"
-import { Home } from './menu/home/index'
+import Home from './menu/home/Home'
+
 function App() {
   return (
     <div >
