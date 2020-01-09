@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
 
 const data = [
@@ -48,18 +48,25 @@ const data = [
 export default class UsersChart extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
 
+  renderColorfulLegendText(value, entry) {
+    const { color } = entry;
+    //IDEA Change newUsers to New users here
+    return <span style={{ color }}>{value}</span>;
+  }
+
   render() {
     return (
       <div>
-        New users and total users chart
+        <div>Number of users</div>
         <AreaChart
           width={500}
-          height={400}
+          height={450}
           data={data}
           margin={{
             top: 10, right: 30, left: 0, bottom: 0,
           }}
         >
+          <Legend verticalAlign="top" height={30} formatter={this.renderColorfulLegendText}/>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
