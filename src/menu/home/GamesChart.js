@@ -28,16 +28,22 @@ const renderCustomizedLabel = ({
 export default class GamesChart extends PureComponent {
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
 
+  renderColorfulLegendText(value, entry) {
+    const { color } = entry;
+    //IDEA Change newUsers to New users here
+    return <span style={{ color }}>{value}</span>;
+  }
+
   render() {
     return (
       <div>
-        Games played last month chart
-        <PieChart width={500} height={450}>
-          <Legend verticalAlign="top" height={30}/>
+        <div>Types of games played last month</div>
+        <PieChart width={500} height={450} >
+          <Legend verticalAlign="top" height={30} formatter={this.renderColorfulLegendText}/>
           <Pie
             data={data}
-            cx={200}
-            cy={200}
+            cx={'50%'}
+            cy={'50%'}
             labelLine={false}
             label={renderCustomizedLabel}
             outerRadius={190}
