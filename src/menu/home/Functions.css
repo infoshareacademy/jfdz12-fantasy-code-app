@@ -1,0 +1,32 @@
+.Home__Functions {
+    background-color: #f5db93;
+}
+
+.Home__Functions--title {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+    text-align: center;
+    background-color: #eddaa6;
+}
+.Home__Functions--title > div {
+    width: 25%;
+}
+
+.Home__Functions--description {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+    text-align: center;
+    background-color: #ccbc8f;
+}
+
+.Home__Functions--description > div {
+    width: 25%;
+}
