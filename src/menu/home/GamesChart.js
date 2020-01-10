@@ -26,6 +26,69 @@ const renderCustomizedLabel = ({
 };
 
 export default class GamesChart extends PureComponent {
+  constructor (props) {
+    super (props)
+    this.state = {
+        playedGames:[],
+        kindsOfGames: [],
+        playedGamesByKind: [],
+        isLoading: true,
+        hasError: false,
+        error: '',
+    }
+  }
+
+  fetchPlayedGamesData(){
+    fetch("/data/played-games.json")
+        .then( response => response.json())
+        .then( fetchedData => {
+          this.setState({
+                playedGames: fetchedData,
+                isLoading: false,
+                hasError: false,
+                error: '',
+          })
+        })
+        .catch( error => {
+          this.setState({
+            hasError: true,
+            error: error,
+          })
+        });
+  };
+
+  fetchKindsOfGamesData(){
+    fetch("/data/kinds-of-games.json")
+        .then( response => response.json())
+        .then( fetchedData => {
+          this.setState({
+                kindsOfGames: fetchedData,
+                isLoading: false,
+                hasError: false,
+                error: '',
+          })
+        })
+        .catch( error => {
+          this.setState({
+            hasError: true,
+            error: error,
+          })
+        });
+  };
+
+  componentDidMount(){
+    setTimeout(() => {
+      this.fetchKindsOfGamesData();
+      this.fetchPlayedGamesData();
+    }, 100);
+  };
+
+  renderPlayedGamesByKindArr() {
+    return data = {
+      //to be continued from here
+    }
+  }
+
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
 
   renderColorfulLegendText(value, entry) {
@@ -35,6 +98,22 @@ export default class GamesChart extends PureComponent {
   }
 
   render() {
+    if (this.state.hasError) {
+      return (
+        <div>
+          Error! {this.state.error}
+        </div>
+      );
+    };
+    
+    if (this.state.isLoading) {
+      return (
+        <div>
+          Please wait, loading recently played games data...
+        </div>
+      );
+    };
+
     return (
       <div>
         <div>Types of games played last month</div>
