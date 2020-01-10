@@ -27,56 +27,56 @@ const renderCustomizedLabel = ({
 
 export default class GamesChart extends PureComponent {
   constructor (props) {
-    super (props)
+    super (props);
     this.state = {
-        playedGames:[],
-        kindsOfGames: [],
-        playedGamesByKind: [],
-        isLoading: true,
-        hasError: false,
-        error: '',
-    }
-  }
+      playedGames:[],
+      kindsOfGames: [],
+      playedGamesByKind: [],
+      isLoading: true,
+      hasError: false,
+      error: '',
+    };
+  };
 
-  fetchPlayedGamesData(){
+  fetchPlayedGamesData() {
     fetch("/data/played-games.json")
-        .then( response => response.json())
-        .then( fetchedData => {
-          this.setState({
-                playedGames: fetchedData,
-                isLoading: false,
-                hasError: false,
-                error: '',
-          })
-        })
-        .catch( error => {
-          this.setState({
-            hasError: true,
-            error: error,
-          })
+      .then( response => response.json())
+      .then( fetchedData => {
+        this.setState({
+          playedGames: fetchedData,
+          isLoading: false,
+          hasError: false,
+          error: '',
         });
+      })
+      .catch( error => {
+        this.setState({
+          hasError: true,
+          error: error,
+        });
+      });
   };
 
-  fetchKindsOfGamesData(){
+  fetchKindsOfGamesData() {
     fetch("/data/kinds-of-games.json")
-        .then( response => response.json())
-        .then( fetchedData => {
-          this.setState({
-                kindsOfGames: fetchedData,
-                isLoading: false,
-                hasError: false,
-                error: '',
-          })
-        })
-        .catch( error => {
-          this.setState({
-            hasError: true,
-            error: error,
-          })
+      .then( response => response.json())
+      .then( fetchedData => {
+        this.setState({
+          kindsOfGames: fetchedData,
+          isLoading: false,
+          hasError: false,
+          error: '',
         });
+      })
+      .catch( error => {
+        this.setState({
+          hasError: true,
+          error: error,
+        });
+      });
   };
 
-  componentDidMount(){
+  componentDidMount() {
     setTimeout(() => {
       this.fetchKindsOfGamesData();
       this.fetchPlayedGamesData();
@@ -86,16 +86,16 @@ export default class GamesChart extends PureComponent {
   renderPlayedGamesByKindArr() {
     return data = {
       //to be continued from here
-    }
-  }
+    };
+  };
 
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
 
-  renderColorfulLegendText(value, entry) {
+  renderColorfulLegendText (value, entry) {
     const { color } = entry;
     //IDEA Change newUsers to New users here
     return <span style={{ color }}>{value}</span>;
-  }
+  };
 
   render() {
     if (this.state.hasError) {
@@ -116,7 +116,7 @@ export default class GamesChart extends PureComponent {
 
     return (
       <div>
-        <div>Types of games played last month</div>
+        <div>Number of games by type played last month</div>
         <PieChart width={500} height={450} >
           <Legend verticalAlign="top" height={30} formatter={this.renderColorfulLegendText}/>
           <Pie
@@ -136,5 +136,5 @@ export default class GamesChart extends PureComponent {
         </PieChart>
       </div>
     );
-  }
-}
+  };
+};

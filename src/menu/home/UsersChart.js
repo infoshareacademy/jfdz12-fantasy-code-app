@@ -4,36 +4,36 @@ import {
 } from 'recharts';
 
 export default class UsersChart extends PureComponent {
-  constructor(props) {
-    super(props)
+  constructor (props) {
+    super (props);
     this.state = {
-        registeredUsers:[],
-        isLoading: true,
-        hasError: false,
-        error: '',
-    }
-  }
-
-  fetchRegisteredUsersData(){
-      fetch("/data/registered-users.json")
-          .then( response => response.json())
-          .then( fetchedData => {
-            this.setState({
-                  registeredUsers: fetchedData,
-                  isLoading: false,
-                  hasError: false,
-                  error: '',
-            })
-          })
-          .catch((error) => {
-            this.setState({
-              hasError: true,
-              error: error,
-            })
-          });
+      registeredUsers:[],
+      isLoading: true,
+      hasError: false,
+      error: '',
+    };
   };
 
-  componentDidMount(){
+  fetchRegisteredUsersData() {
+    fetch("/data/registered-users.json")
+      .then( response => response.json())
+      .then( fetchedData => {
+        this.setState({
+          registeredUsers: fetchedData,
+          isLoading: false,
+          hasError: false,
+          error: '',
+        });
+      })
+      .catch( error => {
+        this.setState({
+          hasError: true,
+          error: error,
+        });
+      });
+  };
+
+  componentDidMount() {
     setTimeout(() => {
       this.fetchRegisteredUsersData();
     }, 100);
@@ -41,7 +41,7 @@ export default class UsersChart extends PureComponent {
 
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
 
-  renderColorfulLegendText(value, entry) {
+  renderColorfulLegendText (value, entry) {
     const { color } = entry;
     //IDEA Change newUsers to New users here
     return <span style={{ color }}>{value}</span>;
@@ -66,7 +66,7 @@ export default class UsersChart extends PureComponent {
 
     return (
       <div>
-        <div>Number of users</div>
+        <div>Current number of users</div>
         <AreaChart
           width={500}
           height={450}
@@ -85,5 +85,5 @@ export default class UsersChart extends PureComponent {
         </AreaChart>
       </div>
     );
-  }
-}
+  };
+};
