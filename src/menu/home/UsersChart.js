@@ -3,72 +3,81 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
 
-const data = [
-  {
-    name: 'Jan', newUsers: 10, totalUsers: 10,
-  },
-  {
-    name: 'Feb', newUsers: 20, totalUsers: 30,
-  },
-  {
-    name: 'Mar', newUsers: 5, totalUsers: 35,
-  },
-  {
-    name: 'Apr', newUsers: 0, totalUsers: 35,
-  },
-  {
-    name: 'May', newUsers: 27, totalUsers: 62,
-  },
-  {
-    name: 'Jun', newUsers: 10, totalUsers: 72,
-  },
-  {
-    name: 'Jul', newUsers: 0, totalUsers: 72,
-  },
-  {
-    name: 'Jul', newUsers: 18, totalUsers: 90,
-  },
-  {
-    name: 'Aug', newUsers: 9, totalUsers: 99,
-  },
-  {
-    name: 'Sep', newUsers: 18, totalUsers: 117,
-  },
-  {
-    name: 'Oct', newUsers: 1, totalUsers: 118,
-  },
-  {
-    name: 'Nov', newUsers: 22, totalUsers: 140,
-  },
-  {
-    name: 'Dec', newUsers: 10, totalUsers: 150,
-  },
-];
-
 export default class UsersChart extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+        registeredUsers:[],
+        isLoading: true,
+        hasError: false,
+        error: '',
+    }
+  }
+
+  fetchRegisteredUsersData(){
+      fetch("/data/registered-users.json")
+          .then( response => response.json())
+          .then( fetchedData => {
+            this.setState({
+                  registeredUsers: fetchedData,
+                  isLoading: false,
+                  hasError: false,
+                  error: '',
+            })
+          })
+          .catch((error) => {
+            this.setState({
+              hasError: true,
+              error: error,
+            })
+          });
+  };
+
+  componentDidMount(){
+    setTimeout(() => {
+      this.fetchRegisteredUsersData();
+    }, 100);
+  };
+
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
 
   renderColorfulLegendText(value, entry) {
     const { color } = entry;
     //IDEA Change newUsers to New users here
     return <span style={{ color }}>{value}</span>;
-  }
+  };
 
   render() {
+    if (this.state.hasError) {
+      return (
+        <div>
+          Error! {this.state.error}
+        </div>
+      );
+    };
+    
+    if (this.state.isLoading) {
+      return (
+        <div>
+          Please wait, loading registered players data...
+        </div>
+      );
+    };
+
     return (
       <div>
         <div>Number of users</div>
         <AreaChart
           width={500}
           height={450}
-          data={data}
+          data={this.state.registeredUsers}
           margin={{
             top: 10, right: 30, left: 0, bottom: 0,
           }}
         >
           <Legend verticalAlign="top" height={30} formatter={this.renderColorfulLegendText}/>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />
           <Area type="monotone" dataKey="newUsers" stackId="1" stroke="#8884d8" fill="#8884d8" />
