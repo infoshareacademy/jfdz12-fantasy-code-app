@@ -1,16 +1,15 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Switch, Route} from "react-router";
+import { GameCard } from "../menu/games/index";
+import Home from '../menu/home/Home';
 
-function Links() {
-
-  return (
-    <div>
-      <Link to="/">Homepage</Link>
-      <Link to="/games">Games</Link>
-      <Link to="/player-list">Player List</Link>
-      {/* <Link to="/profile">Profile</Link> */}
-    </div>
-  )
-}
-
-export default Links;
+export default () => (
+    <Switch>
+        <Route exact path="/">
+            <Home />
+        </Route>
+        <Route path="/games">
+            <GameCard />
+        </Route>
+    </Switch>
+)
