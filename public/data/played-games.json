@@ -1,0 +1,18 @@
+[
+    {
+        "kindID":1,
+        "playedGames":10
+    },
+    {
+        "kindID":2,
+        "playedGames":20
+    },
+    {
+        "kindID":3,
+        "playedGames":50
+    },
+    {
+        "kindID":4,
+        "playedGames":5
+    }
+]

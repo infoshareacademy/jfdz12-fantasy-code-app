@@ -26,18 +26,103 @@ const renderCustomizedLabel = ({
 };
 
 export default class GamesChart extends PureComponent {
+  constructor (props) {
+    super (props);
+    this.state = {
+      playedGames:[],
+      kindsOfGames: [],
+      playedGamesByKind: [],
+      isLoading: true,
+      hasError: false,
+      error: '',
+    };
+  };
+
+  fetchPlayedGamesData() {
+    fetch("/data/played-games.json")
+      .then( response => response.json())
+      .then( fetchedData => {
+        this.setState({
+          playedGames: fetchedData,
+          isLoading: false,
+          hasError: false,
+          error: '',
+        });
+      })
+      .catch( error => {
+        this.setState({
+          hasError: true,
+          error: error,
+        });
+      });
+  };
+
+  fetchKindsOfGamesData() {
+    fetch("/data/kinds-of-games.json")
+      .then( response => response.json())
+      .then( fetchedData => {
+        this.setState({
+          kindsOfGames: fetchedData,
+          isLoading: false,
+          hasError: false,
+          error: '',
+        });
+      })
+      .catch( error => {
+        this.setState({
+          hasError: true,
+          error: error,
+        });
+      });
+  };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.fetchKindsOfGamesData();
+      this.fetchPlayedGamesData();
+    }, 100);
+  };
+
+  renderPlayedGamesByKindArr() {
+    return data = {
+      //to be continued from here
+    };
+  };
+
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
 
+  renderColorfulLegendText (value, entry) {
+    const { color } = entry;
+    //IDEA Change newUsers to New users here
+    return <span style={{ color }}>{value}</span>;
+  };
+
   render() {
+    if (this.state.hasError) {
+      return (
+        <div>
+          Error! {this.state.error}
+        </div>
+      );
+    };
+    
+    if (this.state.isLoading) {
+      return (
+        <div>
+          Please wait, loading recently played games data...
+        </div>
+      );
+    };
+
     return (
       <div>
-        Games played last month chart
-        <PieChart width={500} height={450}>
-          <Legend verticalAlign="top" height={30}/>
+        <div>Number of games by type played last month</div>
+        <PieChart width={500} height={450} >
+          <Legend verticalAlign="top" height={30} formatter={this.renderColorfulLegendText}/>
           <Pie
             data={data}
-            cx={200}
-            cy={200}
+            cx={'50%'}
+            cy={'50%'}
             labelLine={false}
             label={renderCustomizedLabel}
             outerRadius={190}
@@ -51,5 +136,5 @@ export default class GamesChart extends PureComponent {
         </PieChart>
       </div>
     );
-  }
-}
+  };
+};
