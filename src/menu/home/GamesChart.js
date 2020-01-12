@@ -24,7 +24,7 @@ export default class GamesChart extends PureComponent {
     this.state = {
       playedGames:[],
       kindsOfGames: [],
-      data: [],
+      playedGamesByKind: [],
       isLoading: true,
       hasError: false,
       error: '',
@@ -79,7 +79,7 @@ export default class GamesChart extends PureComponent {
     });
 
     this.setState({
-      data: data,
+      playedGamesByKind: data,
     })
   };
 
@@ -123,7 +123,7 @@ export default class GamesChart extends PureComponent {
         <PieChart width={500} height={450} >
           <Legend verticalAlign="top" height={30} formatter={this.renderColorfulLegendText}/>
           <Pie
-            data={this.state.data}
+            data={this.state.playedGamesByKind}
             cx={'50%'}
             cy={'50%'}
             labelLine={false}
@@ -133,7 +133,7 @@ export default class GamesChart extends PureComponent {
             dataKey="playedGames"
           >
             {
-              this.state.data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+              this.state.playedGamesByKind.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
             }
           </Pie>
         </PieChart>
