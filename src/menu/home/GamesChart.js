@@ -76,17 +76,19 @@ export default class GamesChart extends PureComponent {
       });
   };
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.fetchKindsOfGamesData();
-      this.fetchPlayedGamesData();
-    }, 100);
+  renderPlayedGamesByKindArr() {
+    this.setState({
+        playedGamesByKind: {
+          kindName: 
+          playedGames
+        }
+      });
   };
 
-  renderPlayedGamesByKindArr() {
-    return data = {
-      //to be continued from here
-    };
+  componentDidMount() {
+      this.fetchKindsOfGamesData();
+      this.fetchPlayedGamesData();
+      this.renderPlayedGamesByKindArr();
   };
 
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
