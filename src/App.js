@@ -1,15 +1,15 @@
 import React from 'react';
-import './App.css';
-import GameCard from "./menu/games/index"
-import Home from './menu/home/Home'
+import Navbar from './navbar/Navbar';
+import Links from './navbar/Links';
+import {BrowserRouter as Router} from "react-router-dom";
+
 
 function App() {
   return (
-    <div >
-      <GameCard/>
-      <Home />
-
-    </div>
+    <Router>
+      <Navbar />
+      <Links />
+    </Router>
   );
 }
 
