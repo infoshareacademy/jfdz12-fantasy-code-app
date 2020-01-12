@@ -1,0 +1,20 @@
+.Home {
+    background-color: #f5db93;
+}
+
+.Home__Welcome {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: #ccbc8f;
+}
+
+.Home__Charts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    float: left;
+    text-align: center;
+    background-color: #eddaa6;
+}
