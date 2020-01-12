@@ -4,20 +4,26 @@
     "nick":"adam",
     "email":"asd@wp.pl",
     "favouriteGames":[1,2,3],
-    "levelID":1
+    "levelID":1,
+    "class": "Mage",
+    "city": "Sopot"    
     },
     {
     "id":2,
     "nick":"michal",
     "email":"asd@wp.pl",
     "favouriteGames":[1,2,3],
-    "levelID":4
+    "levelID":4,
+    "class": "General",
+    "city": "Gdansk"  
     },
     {
     "id":3,
     "nick":"kuba",
     "email":"asd@wp.pl",
     "favouriteGames":[1,2,3],
-    "levelID":3
+    "levelID":3,
+    "class": "Assassin",
+    "city": "Gdynia"    
     }
 ]
