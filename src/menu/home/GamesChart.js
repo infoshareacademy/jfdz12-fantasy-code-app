@@ -77,10 +77,8 @@ export default class GamesChart extends PureComponent {
   };
 
   componentDidMount() {
-    setTimeout(() => {
       this.fetchKindsOfGamesData();
       this.fetchPlayedGamesData();
-    }, 100);
   };
 
   renderPlayedGamesByKindArr() {
