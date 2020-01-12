@@ -1,13 +1,6 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell, Legend } from 'recharts';
 
-const data = [
-  { name: 'GamesRPG', value: 10 },
-  { name: 'GamesDice', value: 20 },
-  { name: 'GamesBoard', value: 50 },
-  { name: 'GamesOther', value: 5 },
-];
-
 const COLORS = ['#0088FE', '#00E49F', '#8884d8', '#82ca9d'];
 
 const RADIAN = Math.PI / 180;
@@ -31,7 +24,7 @@ export default class GamesChart extends PureComponent {
     this.state = {
       playedGames:[],
       kindsOfGames: [],
-      playedGamesByKind: [],
+      data: [],
       isLoading: true,
       hasError: false,
       error: '',
@@ -39,7 +32,7 @@ export default class GamesChart extends PureComponent {
   };
 
   fetchPlayedGamesData() {
-    fetch("/data/played-games.json")
+    return fetch("/data/played-games.json")
       .then( response => response.json())
       .then( fetchedData => {
         this.setState({
@@ -58,7 +51,7 @@ export default class GamesChart extends PureComponent {
   };
 
   fetchKindsOfGamesData() {
-    fetch("/data/kinds-of-games.json")
+    return fetch("/data/kinds-of-games.json")
       .then( response => response.json())
       .then( fetchedData => {
         this.setState({
@@ -76,15 +69,27 @@ export default class GamesChart extends PureComponent {
       });
   };
 
-  componentDidMount() {
-      this.fetchKindsOfGamesData();
-      this.fetchPlayedGamesData();
+  renderPlayedGamesByKindArr() {
+    const data = this.state.playedGames.map( game => {
+      return {
+        ...game,
+        name: this.state.kindsOfGames.find( kind => {
+          return kind.kindID === game.kindID}).kindName,
+        }
+    });
+
+    this.setState({
+      data: data,
+    })
   };
 
-  renderPlayedGamesByKindArr() {
-    return data = {
-      //to be continued from here
-    };
+  componentDidMount() {
+      Promise.all([
+        this.fetchKindsOfGamesData(),
+        this.fetchPlayedGamesData(),
+        ])
+        .then(() => {this.renderPlayedGamesByKindArr();
+      });
   };
 
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
@@ -118,17 +123,17 @@ export default class GamesChart extends PureComponent {
         <PieChart width={500} height={450} >
           <Legend verticalAlign="top" height={30} formatter={this.renderColorfulLegendText}/>
           <Pie
-            data={data}
+            data={this.state.data}
             cx={'50%'}
             cy={'50%'}
             labelLine={false}
             label={renderCustomizedLabel}
             outerRadius={190}
             fill="#8884d8"
-            dataKey="value"
+            dataKey="playedGames"
           >
             {
-              data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+              this.state.data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
             }
           </Pie>
         </PieChart>
