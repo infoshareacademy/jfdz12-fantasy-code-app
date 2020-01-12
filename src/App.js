@@ -7,7 +7,7 @@ function App() {
   return (
     <div >
       <GameCard/>
-      <Home />
+      <Home/>
 
     </div>
   );
