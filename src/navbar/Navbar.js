@@ -1,10 +1,10 @@
 import React from 'react';
 import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
 import Links from './Links';
-// import {HomePage} from '';
-// import {Page1} from '';
-// import {Page2} from '';
-// import {Page3} from '';
+import {Home} from '../menu/home/index';
+import Games from '../menu/games/index';
+import {FavouriteListOfGames} from '../profil/Personal-info/favourite-games';
+// import {PlayerList} from '';
 
 
 export default function Navbar() {
@@ -12,23 +12,19 @@ export default function Navbar() {
     <BrowserRouter>
       <Links/>
       <Switch>
-        {/* <Route
-          path="/page/1"
-          component={Page1}
+        <Route
+          path="/games"
+          component={Games}
         />
         <Route
-          path="/page/2"
-          component={Page2}
-        />
-        <Route
-          path="/page/3"
-          component={Page3}
+          path="/profile"
+          component={FavouriteListOfGames}
         />
         <Route
           path="/"
           exact
-          component={HomePage}
-        /> */}
+          component={Home}
+        />
         <Redirect to="/"/>
       </Switch>
     </BrowserRouter>
