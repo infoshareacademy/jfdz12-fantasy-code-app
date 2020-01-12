@@ -1,0 +1,18 @@
+[
+    {
+        "gameID":1,
+        "gameName":"bitewna"
+    },
+    {
+        "gameID":2,
+        "gameName":"karciana"
+    },
+    {
+        "gameID":3,
+        "gameName":"planszowa"
+    },
+    {
+        "gameID":4,
+        "gameName":"imprezowa"
+    }
+]
