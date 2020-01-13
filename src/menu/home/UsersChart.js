@@ -34,9 +34,7 @@ export default class UsersChart extends PureComponent {
   };
 
   componentDidMount() {
-    setTimeout(() => {
       this.fetchRegisteredUsersData();
-    }, 100);
   };
 
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
