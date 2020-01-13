@@ -1,7 +1,7 @@
 import React from "react";
 import {  Card, Dimmer, Loader, Image, Segment, Container  } from 'semantic-ui-react'
-
 import GameCard from "./game-card/GameCard.js";
+import GameFilter from "./game-filter/GameFilter.js";
 
 export class GameCardColection extends React.Component{
     constructor(props){
@@ -10,7 +10,7 @@ export class GameCardColection extends React.Component{
             games:[],
             loading: true,
             error: null,
-            value: ''
+            value:""
         }
        
     }
@@ -35,7 +35,8 @@ export class GameCardColection extends React.Component{
             }))  
     }
     displayGameKind(){
-            return(this.state.games.filter(
+            return(
+              this.state.games.filter(
               game=>game.title.includes(this.state.value)
               
             ).map(game=>
@@ -63,20 +64,14 @@ export class GameCardColection extends React.Component{
         )
       }else return(
         
-            <div><Container>
-                  <form style={{padding:"10px"}} >
-                  <label>
-                    Search:
-                  <input onChange={this.handleSubmit}></input>
-                  </label>
-                  
-                </form>
-            </Container>
-                
-                <Container >
-                <Card.Group margin="12px">
-                  {this.displayGameKind()}
-                </Card.Group>
+            <div>
+                <Container>
+                  <GameFilter onChange={this.handleSubmit}/>
+                </Container>
+                <Container>
+                  <Card.Group margin="12px">
+                    {this.displayGameKind()}
+                  </Card.Group>
                 </Container>
             </div>
         )
