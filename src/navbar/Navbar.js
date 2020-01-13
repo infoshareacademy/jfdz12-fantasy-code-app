@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { Grid, Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment, Input, Icon } from 'semantic-ui-react'
 import Links from './Links';
+import logo from './js1.png';
 
-export default class MenuExampleTabularOnRight extends Component {
+export default class MenuSecondaryPointing extends Component {
     state = { activeItem: 'home' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -12,39 +13,51 @@ export default class MenuExampleTabularOnRight extends Component {
         const { activeItem } = this.state
 
         return (
-            <Grid>
-                <Grid.Column stretched width={12}>
-                    <Segment>
-                        <Links />
-                    </Segment>
-                </Grid.Column>
+            <div>
+                <Menu pointing secondary size='massive' color='blue'>
+                    <Link to="/">
+                        <Menu.Item
+                            name='home'
+                            active={activeItem === 'home'}
+                            onClick={this.handleItemClick}
+                        >
+                            <Icon name='code'/>
+                        </Menu.Item>
+                    </Link>
+                    <Link to="/games">
+                        <Menu.Item
+                            name='games'
+                            active={activeItem === 'games'}
+                            onClick={this.handleItemClick}
+                        />
+                    </Link>
+                    <Link to="/players">
+                        <Menu.Item
+                            name='players'
+                            active={activeItem === 'players'}
+                            onClick={this.handleItemClick}
+                        />
+                    </Link>
+                    <Menu.Menu position='right' color='blue'>
+                        <Menu.Item>
+                            <Input
+                                transparent
+                                icon={{ name: 'search', link: true }}
+                                placeholder='Search...'
+                            />
+                        </Menu.Item>
+                        <Menu.Item
+                            name='logout'
+                            active={activeItem === 'logout'}
+                            onClick={this.handleItemClick}
+                        />
+                    </Menu.Menu>
+                </Menu>
 
-                <Grid.Column width={4}>
-                    <Menu fluid vertical tabular='right' size='massive'>
-                        <Link to="/">
-                            <Menu.Item
-                                name='home'
-                                active={activeItem === 'home'}
-                                onClick={this.handleItemClick}
-                            />
-                        </Link>
-                        <Link to="/games">
-                            <Menu.Item
-                                name='games'
-                                active={activeItem === 'games'}
-                                onClick={this.handleItemClick}
-                            />
-                        </Link>
-                        <Link to="/players">
-                            <Menu.Item
-                                name='players'
-                                active={activeItem === 'players'}
-                                onClick={this.handleItemClick}
-                            />
-                        </Link>
-                    </Menu>
-                </Grid.Column>
-            </Grid>
+                <Segment>
+                    <Links />
+                </Segment>
+            </div>
         )
     }
 }
