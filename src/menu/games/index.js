@@ -36,22 +36,22 @@ export class GameCardColection extends React.Component{
     }
     displayGameKind(){
             return(
-              this.state.games.filter(
-              game=>game.title.includes(this.state.value)
-              
-            ).map(game=>
-              <GameCard
-              key={game.id}
-              title={game.title}
-              localization={game.localization.place}
-              date={game.date}
-              playerMax={game.palyer.max}  
-              playerCur={game.palyer.current}  
-              reqLvl={game.ReqLevelID}
-              descript={game.Description}
-              
-              />
-                  )
+              this.state.games
+              .filter(
+                game=>game.title.includes(this.state.value))
+              .map(
+                game=>
+                <GameCard
+                  key={game.id}
+                  title={game.title}
+                  localization={game.localization.place}
+                  date={game.date}
+                  playerMax={game.palyer.max}  
+                  playerCur={game.palyer.current}  
+                  reqLvl={game.ReqLevelID}
+                  descript={game.Description}
+                />
+              )
             )}
     render(){
       if(this.state.loading){

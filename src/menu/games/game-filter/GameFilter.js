@@ -9,7 +9,6 @@ render(){
           Search: 
         <input onChange={this.props.onChange}></input>
         </label>
-        
       </form>
     )
 }
