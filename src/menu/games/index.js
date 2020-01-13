@@ -1,14 +1,23 @@
 import React from "react";
-import { Button, Card, Divider, Dimmer, Loader, Image, Segment  } from 'semantic-ui-react'
-import {GameDetails} from "./game-details/index"
-export class GameCard extends React.Component{
+import {  Card, Dimmer, Loader, Image, Segment, Container  } from 'semantic-ui-react'
+
+import GameCard from "./game-card/GameCard.js";
+
+export class GameCardColection extends React.Component{
     constructor(props){
         super(props)
         this.state={
             games:[],
             loading: true,
             error: null,
+            value: ''
         }
+       
+    }
+    handleSubmit=(event)=>{
+      this.setState({
+        value: event.target.value
+      })
     }
     componentDidMount(){
         this.fetchData()
@@ -26,35 +35,23 @@ export class GameCard extends React.Component{
             }))  
     }
     displayGameKind(){
-            return(this.state.games.map(game=>
-    <Card key={game.id}>
-      <Card.Content>
-        <Card.Header textAlign="center">{game.title}</Card.Header>
-        <Divider/>
-            <Card.Meta>{game.localization.city}</Card.Meta>
-        <Card.Description>
+            return(this.state.games.filter(
+              game=>game.title.includes(this.state.value)
               
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Approve
-          </Button>
-         <GameDetails 
-          title={game.title}
-          localization={game.localization.place}
-          date={game.date}
-          playerMax={game.palyer.max}  
-          playerCur={game.palyer.current}  
-          reqLvl={game.ReqLevelID}
-          descript={game.Description}
-         />
-        </div>
-      </Card.Content>
-    </Card> 
-     ))
-    }
+            ).map(game=>
+              <GameCard
+              key={game.id}
+              title={game.title}
+              localization={game.localization.place}
+              date={game.date}
+              playerMax={game.palyer.max}  
+              playerCur={game.palyer.current}  
+              reqLvl={game.ReqLevelID}
+              descript={game.Description}
+              
+              />
+                  )
+            )}
     render(){
       if(this.state.loading){
         return(
@@ -62,18 +59,25 @@ export class GameCard extends React.Component{
           <Dimmer active>
             <Loader size='massive'>Loading</Loader>
           </Dimmer>
-    
-          <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-          <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-          <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
         </Segment>
         )
       }else return(
         
-            <div>
+            <div><Container>
+                  <form style={{padding:"10px"}} >
+                  <label>
+                    Search:
+                  <input onChange={this.handleSubmit}></input>
+                  </label>
+                  
+                </form>
+            </Container>
+                
+                <Container >
                 <Card.Group margin="12px">
                   {this.displayGameKind()}
                 </Card.Group>
+                </Container>
             </div>
         )
     }
