@@ -11,12 +11,19 @@ export class GameCardColection extends React.Component{
             games:[],
             loading: true,
             error: null,
-            value:"",
+            sortByName:"",
+            sortByCity:"",
+            sortByPlayerCount:""
         }
     }
-    handleSubmit=(event)=>{
+    handleSortByName=(event)=>{
       this.setState({
-        value: event.target.value
+        sortByName: event.target.value
+      })
+    }
+    handleSortByCity=(event)=>{
+      this.setState({
+        sortByCity: event.target.value
       })
     }
     componentDidMount(){
@@ -39,7 +46,8 @@ export class GameCardColection extends React.Component{
             return(
               this.state.games
               .filter(
-                game=>game.title.toLocaleLowerCase().includes(this.state.value.toLocaleLowerCase()))
+                game=>game.title.toLowerCase().includes(this.state.sortByName.toLowerCase()))
+              .filter(game=>game.localization.city.toLowerCase().includes(this.state.sortByCity.toLowerCase()))
               .map(
                 game=>
                 <GameCard
@@ -65,12 +73,13 @@ export class GameCardColection extends React.Component{
         )
       }else return(
             <div>
-                <Container>
-                <GameFilter onChange={this.handleSubmit}/>
-                </Container>
+                <GameFilter 
+                sortByName={this.handleSortByName}
+                sortByCity={this.handleSortByCity}
+                />
                 <Segment inverted color="blue">
                   <Container fluid>
-                  <Card.Group className="ui centered rgrid" textAlign="center">
+                  <Card.Group className="ui centered grid" textAlign="center">
                     {this.displayGameKind()}
                   </Card.Group>
                   </Container>
