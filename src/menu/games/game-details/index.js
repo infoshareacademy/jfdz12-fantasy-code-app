@@ -14,8 +14,6 @@ export class GameDetails extends React.Component{
                        <h3>
                        Title:  {this.props.title}
                        </h3>
-                       
-                        
                         <p>
                         Localization:  {this.props.localization}
                         </p>

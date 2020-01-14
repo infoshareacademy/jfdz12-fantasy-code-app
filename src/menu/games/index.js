@@ -1,7 +1,8 @@
 import React from "react";
-import {  Card, Dimmer, Loader, Image, Segment, Container  } from 'semantic-ui-react'
+import {  Card, Dimmer, Loader, Segment, Container  } from 'semantic-ui-react'
 import GameCard from "./game-card/GameCard.js";
 import GameFilter from "./game-filter/GameFilter.js";
+
 
 export class GameCardColection extends React.Component{
     constructor(props){
@@ -10,9 +11,8 @@ export class GameCardColection extends React.Component{
             games:[],
             loading: true,
             error: null,
-            value:""
+            value:"",
         }
-       
     }
     handleSubmit=(event)=>{
       this.setState({
@@ -20,9 +20,9 @@ export class GameCardColection extends React.Component{
       })
     }
     componentDidMount(){
-        this.fetchData()
+        this.fetchPlaysData()
     }
-    fetchData(){
+    fetchPlaysData(){
         fetch("/plays.json")
             .then(resp=>resp.json())
             .then(resp=>
@@ -34,11 +34,12 @@ export class GameCardColection extends React.Component{
                 error:"err occ"
             }))  
     }
+    
     displayGameKind(){
             return(
               this.state.games
               .filter(
-                game=>game.title.includes(this.state.value))
+                game=>game.title.toLocaleLowerCase().includes(this.state.value.toLocaleLowerCase()))
               .map(
                 game=>
                 <GameCard
@@ -63,16 +64,17 @@ export class GameCardColection extends React.Component{
         </Segment>
         )
       }else return(
-        
             <div>
                 <Container>
-                  <GameFilter onChange={this.handleSubmit}/>
+                <GameFilter onChange={this.handleSubmit}/>
                 </Container>
-                <Container>
-                  <Card.Group margin="12px">
+                <Segment inverted color="blue">
+                  <Container fluid>
+                  <Card.Group className="ui centered rgrid" textAlign="center">
                     {this.displayGameKind()}
                   </Card.Group>
-                </Container>
+                  </Container>
+                </Segment>
             </div>
         )
     }

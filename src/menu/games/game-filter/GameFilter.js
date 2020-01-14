@@ -1,15 +1,18 @@
 import React from "react"
-
-
+import { Segment, Form } from "semantic-ui-react"
 export default class GameFilter extends React.Component{
 render(){
     return(
-        <form style={{padding:"10px"}} >
+      <Segment inverted color="blue">
+        <Form>
         <label>
           Search: 
         <input onChange={this.props.onChange}></input>
+        
         </label>
-      </form>
+        </Form>
+      </Segment>
+        
     )
 }
 }
