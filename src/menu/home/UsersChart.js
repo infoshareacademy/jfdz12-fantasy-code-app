@@ -65,15 +65,8 @@ export default class UsersChart extends PureComponent {
     return (
       <div>
         <div>Current number of users</div>
-        <AreaChart
-          width={500}
-          height={450}
-          data={this.state.registeredUsers}
-          margin={{
-            top: 10, right: 30, left: 0, bottom: 0,
-          }}
-        >
-          <Legend verticalAlign="top" height={30} formatter={this.renderColorfulLegendText}/>
+        <AreaChart width={600} height={450} data={this.state.registeredUsers}>
+          <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText}/>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
           <YAxis />
