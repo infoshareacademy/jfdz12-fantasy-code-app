@@ -89,7 +89,7 @@ export default class GamesChart extends PureComponent {
   };
 
   renderCustomizedLabel = ({
-    cx, cy, midAngle, innerRadius, outerRadius, percent, index,
+    cx, cy, midAngle, innerRadius, outerRadius, percent,
   }) => {
      const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -105,14 +105,14 @@ export default class GamesChart extends PureComponent {
   renderActiveShape = (props) => {
     const {
       cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
-      fill, payload, percent, value,
+      fill, payload, value,
     } = props;
     const sin = Math.sin(-RADIAN * midAngle);
     const cos = Math.cos(-RADIAN * midAngle);
-    const sx = cx + (outerRadius + 10) * cos;
-    const sy = cy + (outerRadius + 10) * sin;
-    const mx = cx + (outerRadius + 25) * cos;
-    const my = cy + (outerRadius + 25) * sin;
+    const sx = cx + (outerRadius + 5) * cos;
+    const sy = cy + (outerRadius + 5) * sin;
+    const mx = cx + (outerRadius + 30) * cos;
+    const my = cy + (outerRadius + 30) * sin;
     const ex = mx + (cos >= 0 ? 1 : -1) * 11;
     const ey = my;
     const textAnchor = cos >= 0 ? 'start' : 'end';
@@ -139,11 +139,8 @@ export default class GamesChart extends PureComponent {
         />
         <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
         <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{payload.name}</text>
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18}textAnchor={textAnchor} fill="#333">{`Played ${value} times`}</text>
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={36} textAnchor={textAnchor} fill="#999">
-          {`(Rate ${(percent * 100).toFixed(2)}%)`}
-        </text>
+        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={-8} dominantBaseline="central" textAnchor={textAnchor} fill="#333">{payload.name}</text>
+        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={10} dominantBaseline="central" textAnchor={textAnchor} fill="#333">{`Played ${value} times`}</text>
       </g>
     );
   };
@@ -185,7 +182,7 @@ export default class GamesChart extends PureComponent {
             cy={'50%'}
             labelLine={false}
             label={this.renderCustomizedLabel}
-            outerRadius={150}
+            outerRadius={160}
             fill="#8884d8"
             dataKey="playedGames"
           >
