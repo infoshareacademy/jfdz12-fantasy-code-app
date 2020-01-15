@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Menu, Segment, Input, Icon } from 'semantic-ui-react'
 import Links from './Links';
-import logo from './js1.png';
 
 export default class MenuSecondaryPointing extends Component {
     state = { activeItem: 'home' }
