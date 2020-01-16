@@ -36,8 +36,8 @@ export class PlayerList extends React.Component {
                         {player.levelID}
                     </Card.Meta>
                     <Card.Description>
-                        {player.nick[0].toUpperCase() + player.nick.slice(1)} 
-                        is a {player.class[0].toLowerCase() + player.class.slice(1) + " "} 
+                        {player.nick[0].toUpperCase() + player.nick.slice(1)}
+                        is a {player.class[0].toLowerCase() + player.class.slice(1) + " "}
                         living in {player.city}.
                   </Card.Description>
                 </Card.Content>
@@ -65,9 +65,17 @@ export class PlayerList extends React.Component {
             )
         } else return (
             <div>
-                <Card.Group margin="12px">
-                    {this.displayPlayersList()}
-                </Card.Group>
+                <Container>
+                    <GameFilter onChange={this.handleSubmit} />
+                </Container>
+                
+                <Segment inverted color="blue">
+                    <Container fluid>
+                        <Card.Group className="ui centered rgrid" textAlign="center">
+                            {this.displayPlayersList()}
+                        </Card.Group>
+                    </Container>
+                </Segment>
             </div>
         )
     }
