@@ -20,7 +20,7 @@ export default class MenuSecondaryPointing extends Component {
                             active={activeItem === 'home'}
                             onClick={this.handleItemClick}
                         >
-                            <Icon name='code'/>
+                            <Icon name='home'/>
                         </Menu.Item>
                     </Link>
                     <Link to="/games">

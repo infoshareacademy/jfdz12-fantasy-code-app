@@ -81,7 +81,7 @@ export class PlayerList extends React.Component {
                     <PlayersFilter onChange={this.handleSubmit} />
                 </Container>
                 
-                <Segment inverted color="blue">
+                <Segment inverted color="black">
                     <Container fluid>
                         <Card.Group className="ui centered rgrid" textAlign="center">
                             {this.displayPlayersList()}
