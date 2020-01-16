@@ -1,5 +1,7 @@
-import React from 'react'
-import { Card, Icon, Image, Segment, Dimmer, Loader, Container } from 'semantic-ui-react'
+import React from 'react';
+import { Card, Icon, Image, Segment, Dimmer, Loader, Container } from 'semantic-ui-react';
+import PlayersFilter from './player-list/PlayersFilter';
+
 
 export class PlayerList extends React.Component {
     constructor(props) {
@@ -66,7 +68,7 @@ export class PlayerList extends React.Component {
         } else return (
             <div>
                 <Container>
-                    <GameFilter onChange={this.handleSubmit} />
+                    <PlayersFilter onChange={this.handleSubmit} />
                 </Container>
                 
                 <Segment inverted color="blue">
