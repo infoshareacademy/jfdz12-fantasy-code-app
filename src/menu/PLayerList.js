@@ -10,8 +10,14 @@ export class PlayerList extends React.Component {
             playersList: [],
             loading: true,
             error: null,
+            value: '',
         }
     }
+    handleSubmit=(event)=>{
+        this.setState({
+          value: event.target.value
+        })
+      }
     componentDidMount() {
         this.fetchData()
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from "react-router";
 import { GameCard } from "../menu/games/index";
 import Home from '../menu/home/Home';
-import { PlayerList } from '../menu';
+import { PlayerList } from '../menu/PLayerList';
 
 export default () => (
     <Switch>
