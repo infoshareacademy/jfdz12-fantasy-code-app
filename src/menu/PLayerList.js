@@ -35,7 +35,11 @@ export class PlayerList extends React.Component {
     }
 
     displayPlayersList() {
-        return (this.state.playersList.map(player =>
+        return (
+            this.state.playersList
+            .filter(player=>
+                player.nick.toLocaleLowerCase().includes(this.state.value.toLocaleLowerCase()))
+            .map(player =>
             <Card key={player.id}>
                 <Image src={player.avatar} wrapped ui={false} />
                 <Card.Content>
