@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Image, Segment, Dimmer, Loader } from 'semantic-ui-react'
+import { Card, Icon, Image, Segment, Dimmer, Loader, Container } from 'semantic-ui-react'
 
 export class PlayerList extends React.Component {
     constructor(props) {
