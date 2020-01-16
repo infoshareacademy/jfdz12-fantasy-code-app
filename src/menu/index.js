@@ -26,12 +26,10 @@ export class PlayerList extends React.Component {
             }))
     }
 
-    
-
     displayPlayersList() {
         return (this.state.playersList.map(player =>
             <Card key={player.id}>
-                <Image src='https://randomuser.me/api/' wrapped ui={false} />
+                <Image src={player.avatar} wrapped ui={false} />
                 <Card.Content>
                     <Card.Header>{player.nick}</Card.Header>
                     <Card.Meta>
@@ -39,7 +37,7 @@ export class PlayerList extends React.Component {
                     </Card.Meta>
                     <Card.Description>
                         {player.nick[0].toUpperCase() + player.nick.slice(1)} 
-                        is a {player.class[0].toLowerCase() + player.class.slice(1)} 
+                        is a {player.class[0].toLowerCase() + player.class.slice(1) + " "} 
                         living in {player.city}.
                   </Card.Description>
                 </Card.Content>
@@ -47,7 +45,7 @@ export class PlayerList extends React.Component {
                     <a>
                         <Icon name='user' />
                         22 Friends
-                  </a>
+                    </a>
                 </Card.Content>
             </Card>
         ))
