@@ -42,8 +42,18 @@ export default class GamesChart extends PureComponent {
     return fetch("/data/kinds-of-games.json")
       .then( response => response.json())
       .then( fetchedData => {
+        const kindsOfGamesWithCapitalizedFirstLetter = fetchedData.map( kind => {
+            const kindName = kind.kindName;
+            const kindNameCapitalized = kindName.charAt(0).toUpperCase() + kindName.slice(1);
+            return {
+              kindID: kind.kindID,
+              kindName: kindNameCapitalized,
+            };
+          }
+        );
+
         this.setState({
-          kindsOfGames: fetchedData,
+          kindsOfGames: kindsOfGamesWithCapitalizedFirstLetter,
           isLoading: false,
           hasError: false,
           error: '',
@@ -84,7 +94,6 @@ export default class GamesChart extends PureComponent {
 
   renderColorfulLegendText (value, entry) {
     const { color } = entry;
-    //IDEA Change newUsers to New users here
     return <span style={{ color }}>{value}</span>;
   };
 
