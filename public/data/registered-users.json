@@ -1,66 +1,66 @@
 [
     {
-        "month":"Jan",
+        "monthName":"Jan",
         "newUsers":10,
         "totalUsers":10
     },
     {
-        "month":"Feb",
+        "monthName":"Feb",
         "newUsers":20,
         "totalUsers":30
     },
     {
-        "month":"Mar",
+        "monthName":"Mar",
         "newUsers":5,
         "totalUsers":35
     },
     {
-        "month":"Apr",
+        "monthName":"Apr",
         "newUsers":0,
         "totalUsers":35
     },
     {
-        "month":"May",
+        "monthName":"May",
         "newUsers":27,
         "totalUsers":62
     },
     {
-        "month":"Jun",
+        "monthName":"Jun",
         "newUsers":10,
         "totalUsers":72
     },
     {
-        "month":"Jul",
+        "monthName":"Jul",
         "newUsers":0,
         "totalUsers":72
     },
     {
-        "month":"Jul",
+        "monthName":"Jul",
         "newUsers":18,
         "totalUsers":90
     },
     {
-        "month":"Aug",
+        "monthName":"Aug",
         "newUsers":9,
         "totalUsers":99
     },
     {
-        "month":"Sep",
+        "monthName":"Sep",
         "newUsers":18,
         "totalUsers":117
     },
     {
-        "month":"Oct",
+        "monthName":"Oct",
         "newUsers":1,
         "totalUsers":118
     },
     {
-        "month":"Nov",
+        "monthName":"Nov",
         "newUsers":22,
         "totalUsers":140
     },
     {
-        "month":"Dec",
+        "monthName":"Dec",
         "newUsers":10,
         "totalUsers":150
     }
