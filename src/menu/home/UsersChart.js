@@ -2,6 +2,21 @@ import React, { PureComponent } from 'react';
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
+import './UsersChart.css'
+
+const CustomTooltip = ({ active, payload, label, entry }) => {
+  if (active) {
+    return (
+      <div className="custom-tooltip">
+        <p className="label">{`${label}`}</p>
+        <p className="intro">{`New Users : ${payload[0].value}`}</p>
+        <p className="intro">{`Total Users : ${payload[1].value}`}</p>
+      </div>
+    );
+  }
+
+  return null;
+};
 
 export default class UsersChart extends PureComponent {
   constructor (props) {
@@ -41,8 +56,9 @@ export default class UsersChart extends PureComponent {
 
   renderColorfulLegendText (value, entry) {
     const { color } = entry;
-    //IDEA Change newUsers to New users here
-    return <span style={{ color }}>{value}</span>;
+    const dataLabel = value;
+    const dataLabelTransformed = dataLabel.charAt(0).toUpperCase() + dataLabel.slice(1, dataLabel.length-5) + ' ' + dataLabel.slice(dataLabel.length-5);
+    return <span style={{ color }}>{dataLabelTransformed}</span>;
   };
 
   render() {
@@ -68,9 +84,9 @@ export default class UsersChart extends PureComponent {
         <AreaChart width={600} height={450} data={this.state.registeredUsers}>
           <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText}/>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
+          <XAxis dataKey="monthName" />
           <YAxis />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />}/>
           <Area type="monotone" dataKey="newUsers" stackId="1" stroke="#8884d8" fill="#8884d8" />
           <Area type="monotone" dataKey="totalUsers" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
         </AreaChart>
