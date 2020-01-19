@@ -1,23 +1,122 @@
 [
     {
-    "id":1,
-    "nick":"adam",
-    "email":"asd@wp.pl",
-    "favouriteGames":[1,2,3],
-    "levelID":1
+        "id": 1,
+        "nick": "adam",
+        "email": "asd@wp.pl",
+        "friends": 12,
+        "favouriteGames": [
+            1,
+            2,
+            3
+        ],
+        "levelID": 1,
+        "class": "Mage",
+        "city": "Sopot",
+        "avatar": "https://avatarfiles.alphacoders.com/865/86518.png"
     },
     {
-    "id":2,
-    "nick":"michal",
-    "email":"asd@wp.pl",
-    "favouriteGames":[1,2,3],
-    "levelID":4
+        "id": 2,
+        "nick": "michal",
+        "email": "asd@wp.pl",
+        "friends": 13,
+        "favouriteGames": [
+            1,
+            2,
+            3
+        ],
+        "levelID": 4,
+        "class": "General",
+        "city": "Gdansk",
+        "avatar": "https://avatarfiles.alphacoders.com/153/153443.jpg"
     },
     {
-    "id":3,
-    "nick":"kuba",
-    "email":"asd@wp.pl",
-    "favouriteGames":[1,2,3],
-    "levelID":3
+        "id": 3,
+        "nick": "kuba",
+        "email": "asd@wp.pl",
+        "friends": 5,
+        "favouriteGames": [
+            1,
+            2,
+            3
+        ],
+        "levelID": 3,
+        "class": "Assassin",
+        "city": "Gdynia",
+        "avatar": "https://avatarfiles.alphacoders.com/190/190579.jpg"
+    },
+    {
+        "id": 4,
+        "nick": "maciej",
+        "email": "asd@wp.pl",
+        "friends": 9,
+        "favouriteGames": [
+            1,
+            2,
+            3
+        ],
+        "levelID": 1,
+        "class": "Mage",
+        "city": "Sopot",
+        "avatar": "https://avatarfiles.alphacoders.com/103/103373.png"
+    },
+    {
+        "id": 5,
+        "nick": "kamil",
+        "email": "asd@wp.pl",
+        "friends": 21,
+        "favouriteGames": [
+            1,
+            2,
+            3
+        ],
+        "levelID": 4,
+        "class": "General",
+        "city": "Gdansk",
+        "avatar": "https://avatarfiles.alphacoders.com/126/126146.jpg"
+    },
+    {
+        "id": 6,
+        "nick": "karol",
+        "email": "asd@wp.pl",
+        "friends": 34,
+        "favouriteGames": [
+            1,
+            2,
+            3
+        ],
+        "levelID": 3,
+        "class": "Assassin",
+        "city": "Gdynia",
+        "avatar": "https://avatarfiles.alphacoders.com/128/128776.jpg"
+    },
+    {
+        "id": 7,
+        "nick": "piotr",
+        "email": "asd@wp.pl",
+        "friends": 43,
+        "favouriteGames": [
+            1,
+            2,
+            3
+        ],
+        "levelID": 4,
+        "class": "General",
+        "city": "Gdansk",
+        "avatar": "https://avatarfiles.alphacoders.com/765/76569.jpg"
+    },
+    {
+        "id": 8,
+        "nick": "paweł",
+        "email": "asd@wp.pl",
+        "friends": 2,
+        "favouriteGames": [
+            1,
+            2,
+            3
+        ],
+        "levelID": 3,
+        "class": "Assassin",
+        "city": "Gdynia",
+        "avatar": "https://avatarfiles.alphacoders.com/140/140368.jpg"
     }
 ]
