@@ -2,7 +2,6 @@ import React from "react";
 import {  Card, Dimmer, Loader, Segment, Container  } from 'semantic-ui-react'
 import GameCard from "./game-card/GameCard.js";
 import GameFilter from "./game-filter/GameFilter.js";
-import SemanticDatepicker from "react-semantic-ui-datepickers";
 import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 
 export class GameCardColection extends React.Component{
@@ -15,7 +14,8 @@ export class GameCardColection extends React.Component{
             sortByName:"",
             sortByCity:"",
             sortByPlayerCount:"",
-            date:0
+            date:0,
+            hideFullGames: true
         }
     }
     handleSortByName=(event)=>{
@@ -31,6 +31,11 @@ export class GameCardColection extends React.Component{
     handleDateChange =(event, date)=> {
       this.setState({date: date.value});
     };
+    handleHideFullGames=()=>{
+      this.setState(prevState=>({
+        hideFullGames: !prevState.hideFullGames
+      }))
+    }
     componentDidMount(){
         this.fetchPlaysData()
     }
@@ -52,7 +57,24 @@ export class GameCardColection extends React.Component{
               .filter(
                 game=>game.title.toLowerCase().includes(this.state.sortByName.toLowerCase()))
               .filter(game=>game.localization.city.toLowerCase().includes(this.state.sortByCity.toLowerCase()))
-              .filter(game=> new Date(game.date)===this.state.date)
+              .filter(game=>{
+                const pickedDate = new Date(this.state.date).getTime();
+                const pickedGameTostring = pickedDate.toString().substring(0,6)
+                const pickedGameBacktoNumber = parseInt(pickedGameTostring);
+                const gameDate= new Date(game.date).getTime();
+                const gameDateToString = gameDate.toString().substring(0,6);
+                const gameDateBackToNumber = parseInt(gameDateToString);
+                if(!pickedDate){
+                  return this.state.games
+                }else if(gameDateBackToNumber === pickedGameBacktoNumber)
+                  return game
+              })
+              .filter(game=>{
+                if(this.state.hideFullGames){
+                  return this.state.games
+                  }else if(game.palyer.max !== game.palyer.current){
+                return game}
+              })
               .map(
                 game=>
                 <GameCard
@@ -81,11 +103,11 @@ export class GameCardColection extends React.Component{
                 <GameFilter 
                 sortByName={this.handleSortByName}
                 sortByCity={this.handleSortByCity}
+                onChange={this.handleDateChange}
+                onSlide={this.handleHideFullGames}
                 />
-                <SemanticDatepicker onChange={this.handleDateChange}/>
-                {console.log(this.state.date)}
-                <Segment inverted color="blue">
-                  <Container fluid>
+                <Segment padded center inverted color="blue">
+                  <Container >
                   <Card.Group className="ui centered grid" textAlign="center">
                     {this.displayGameKind()}
                   </Card.Group>
