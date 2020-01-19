@@ -7,10 +7,10 @@ import './UsersChart.css'
 const CustomTooltip = ({ active, payload, label }) => {
   if (active) {
     return (
-      <div className="Home__Charts--UsersChart--tooltip">
+      <div className="Home__Charts--UsersChart--tooltip--container">
         <p>{`${label}`}</p>
-        <p>{`New Users : ${payload[0].value}`}</p>
-        <p>{`Total Users : ${payload[1].value}`}</p>
+        <p className="Home__Charts--UsersChart--tooltip--intro1">{`New Users : ${payload[0].value}`}</p>
+        <p className="Home__Charts--UsersChart--tooltip--intro2">{`Total Users : ${payload[1].value}`}</p>
       </div>
     );
   };

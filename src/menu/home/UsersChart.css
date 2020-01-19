@@ -1,4 +1,12 @@
-.Home__Charts--UsersChart--tooltip {
+.Home__Charts--UsersChart--tooltip--container {
     background-color: white;
     margin: 1px black;
+}
+
+.Home__Charts--UsersChart--tooltip--intro1 {
+    color: #8884d8;
+}
+
+.Home__Charts--UsersChart--tooltip--intro2 {
+    color: #82ca9d;
 }
