@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from './navbar/Navbar';
-import Links from './navbar/Links';
 import {BrowserRouter as Router} from "react-router-dom";
 
+import Navbar from './navbar/Navbar';
+import Links from './navbar/Links';
 
 function App() {
   return (
@@ -11,6 +11,6 @@ function App() {
       <Links />
     </Router>
   );
-}
+};
 
 export default App;

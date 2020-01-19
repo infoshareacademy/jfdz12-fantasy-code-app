@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './Functions.css';
 
 export default function Functions () {
