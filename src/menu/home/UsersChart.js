@@ -4,16 +4,16 @@ import {
 } from 'recharts';
 import './UsersChart.css'
 
-const CustomTooltip = ({ active, payload, label, entry }) => {
+const CustomTooltip = ({ active, payload, label }) => {
   if (active) {
     return (
-      <div className="custom-tooltip">
-        <p className="label">{`${label}`}</p>
-        <p className="intro">{`New Users : ${payload[0].value}`}</p>
-        <p className="intro">{`Total Users : ${payload[1].value}`}</p>
+      <div className="Home__Charts--UsersChart--tooltip">
+        <p>{`${label}`}</p>
+        <p>{`New Users : ${payload[0].value}`}</p>
+        <p>{`Total Users : ${payload[1].value}`}</p>
       </div>
     );
-  }
+  };
 
   return null;
 };
@@ -52,14 +52,14 @@ export default class UsersChart extends PureComponent {
       this.fetchRegisteredUsersData();
   };
 
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
-
   renderColorfulLegendText (value, entry) {
     const { color } = entry;
     const dataLabel = value;
     const dataLabelTransformed = dataLabel.charAt(0).toUpperCase() + dataLabel.slice(1, dataLabel.length-5) + ' ' + dataLabel.slice(dataLabel.length-5);
     return <span style={{ color }}>{dataLabelTransformed}</span>;
   };
+
+  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
 
   render() {
     if (this.state.hasError) {
@@ -81,12 +81,12 @@ export default class UsersChart extends PureComponent {
     return (
       <div>
         <div>Current number of users</div>
-        <AreaChart width={600} height={450} data={this.state.registeredUsers}>
-          <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText}/>
+        <AreaChart width={600} height={450} data={this.state.registeredUsers} >
+          <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="monthName" />
           <YAxis />
-          <Tooltip content={<CustomTooltip />}/>
+          <Tooltip content={<CustomTooltip />} />
           <Area type="monotone" dataKey="newUsers" stackId="1" stroke="#8884d8" fill="#8884d8" />
           <Area type="monotone" dataKey="totalUsers" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
         </AreaChart>

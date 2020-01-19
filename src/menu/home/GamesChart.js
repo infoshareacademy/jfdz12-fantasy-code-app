@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell, Legend, Sector } from 'recharts';
 
 const COLORS = ['#0088FE', '#00E49F', '#8884d8', '#82ca9d'];
-
 const RADIAN = Math.PI / 180;
 
 export default class GamesChart extends PureComponent {
@@ -15,7 +14,7 @@ export default class GamesChart extends PureComponent {
       isLoading: true,
       hasError: false,
       error: '',
-      activeIndex: 0
+      activeIndex: 0,
     };
   };
 
@@ -78,7 +77,7 @@ export default class GamesChart extends PureComponent {
 
     this.setState({
       playedGamesByKind: data,
-    })
+    });
   };
 
   componentDidMount() {
@@ -90,17 +89,13 @@ export default class GamesChart extends PureComponent {
       });
   };
 
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
-
   renderColorfulLegendText (value, entry) {
     const { color } = entry;
     return <span style={{ color }}>{value}</span>;
   };
 
-  renderCustomizedLabel = ({
-    cx, cy, midAngle, innerRadius, outerRadius, percent,
-  }) => {
-     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
   
@@ -114,7 +109,7 @@ export default class GamesChart extends PureComponent {
   renderActiveShape = (props) => {
     const {
       cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
-      fill, payload, value,
+      fill, payload, value
     } = props;
     const sin = Math.sin(-RADIAN * midAngle);
     const cos = Math.cos(-RADIAN * midAngle);
@@ -160,6 +155,8 @@ export default class GamesChart extends PureComponent {
     });
   };
 
+  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
+
   render() {
     if (this.state.hasError) {
       return (
@@ -181,7 +178,7 @@ export default class GamesChart extends PureComponent {
       <div>
         <div>Number of games by type played last month</div>
         <PieChart width={600} height={450}>
-          <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText}/>
+          <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />
           <Pie
             activeIndex={this.state.activeIndex}
             activeShape={this.renderActiveShape}
