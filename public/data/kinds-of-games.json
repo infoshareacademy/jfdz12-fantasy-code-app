@@ -1,18 +1,18 @@
 [
     {
         "kindID":1,
-        "kindName":"Bitewna"
+        "kindName":"battle"
     },
     {
         "kindID":2,
-        "kindName":"Karciana"
+        "kindName":"card"
     },
     {
         "kindID":3,
-        "kindName":"Planszowa"
+        "kindName":"board"
     },
     {
         "kindID":4,
-        "kindName":"Imprezowa"
+        "kindName":"party"
     }
 ]

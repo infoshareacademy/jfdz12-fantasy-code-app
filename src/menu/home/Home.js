@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Functions from './Functions';
 import UsersChart from './UsersChart';
 import GamesChart from './GamesChart';
@@ -17,6 +18,7 @@ export default function Home() {
             <div className='Home__Charts'>
                 <UsersChart />
             </div>
+            <div></div>
         </div>
     );
 };

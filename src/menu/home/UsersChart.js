@@ -3,6 +3,22 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
 
+import './UsersChart.css'
+
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active) {
+    return (
+      <div className="Home__Charts--UsersChart--tooltip--container">
+        <p>{`${label}`}</p>
+        <p className="Home__Charts--UsersChart--tooltip--intro1">{`New Users : ${payload[0].value}`}</p>
+        <p className="Home__Charts--UsersChart--tooltip--intro2">{`Total Users : ${payload[1].value}`}</p>
+      </div>
+    );
+  };
+
+  return null;
+};
+
 export default class UsersChart extends PureComponent {
   constructor (props) {
     super (props);
@@ -37,13 +53,14 @@ export default class UsersChart extends PureComponent {
       this.fetchRegisteredUsersData();
   };
 
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
-
   renderColorfulLegendText (value, entry) {
     const { color } = entry;
-    //IDEA Change newUsers to New users here
-    return <span style={{ color }}>{value}</span>;
+    const dataLabel = value;
+    const dataLabelTransformed = dataLabel.charAt(0).toUpperCase() + dataLabel.slice(1, dataLabel.length-5) + ' ' + dataLabel.slice(dataLabel.length-5);
+    return <span style={{ color }}>{dataLabelTransformed}</span>;
   };
+
+  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
 
   render() {
     if (this.state.hasError) {
@@ -64,20 +81,13 @@ export default class UsersChart extends PureComponent {
 
     return (
       <div>
-        <div>Current number of users</div>
-        <AreaChart
-          width={500}
-          height={450}
-          data={this.state.registeredUsers}
-          margin={{
-            top: 10, right: 30, left: 0, bottom: 0,
-          }}
-        >
-          <Legend verticalAlign="top" height={30} formatter={this.renderColorfulLegendText}/>
+        <div>Current number of registered users</div>
+        <AreaChart width={600} height={450} data={this.state.registeredUsers} >
+          <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
+          <XAxis dataKey="monthName" />
           <YAxis />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} />
           <Area type="monotone" dataKey="newUsers" stackId="1" stroke="#8884d8" fill="#8884d8" />
           <Area type="monotone" dataKey="totalUsers" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
         </AreaChart>
