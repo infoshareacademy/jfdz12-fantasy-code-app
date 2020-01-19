@@ -9,11 +9,11 @@
     background-color: #ccbc8f;
 }
 
-.Home__Functions {
+.Home__Functions--container {
     background-color: #f5db93;
 }
 
-.Home__Functions--title {
+.Home__Functions--header {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -23,7 +23,7 @@
     text-align: center;
     background-color: #eddaa6;
 }
-.Home__Functions--title > div {
+.Home__Functions--header > div {
     width: 25%;
 }
 
@@ -68,4 +68,63 @@
 
 .Home__Charts--UsersChart--tooltip--intro2 {
     color: #82ca9d;
+}
+
+@media only screen and (min-width: 1462px) {
+
+}
+
+@media only screen and (max-width: 1451px) {
+
+}
+
+@media only screen and (max-width: 1317px) {
+
+}
+
+@media only screen and (max-width: 1119px) {
+
+}
+
+@media only screen and (max-width: 989px) {
+
+}
+
+@media only screen and (max-width: 908px) {
+
+}
+
+@media only screen and (max-width: 805px) {
+    .Home__Functions--container {
+        display: flex;
+        align-items: center;
+    }
+
+    .Home__Functions--title {
+        display: block;
+    }
+
+    .Home__Functions--title > div {
+        width: 100%;
+    }
+
+    .Home__Functions--description {
+        display: block;
+    }
+
+    .Home__Functions--description > div {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 796px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 360px) {
+
 }
