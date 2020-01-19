@@ -106,7 +106,7 @@ export class GameCardColection extends React.Component{
                 onChange={this.handleDateChange}
                 onSlide={this.handleHideFullGames}
                 />
-                <Segment padded center inverted color="blue">
+                <Segment center inverted color="blue">
                   <Container >
                   <Card.Group className="ui centered grid" textAlign="center">
                     {this.displayGameKind()}
