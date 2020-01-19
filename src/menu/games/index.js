@@ -1,19 +1,45 @@
 import React from "react";
-import { Button, Card, Divider, Dimmer, Loader, Image, Segment  } from 'semantic-ui-react'
-import {GameDetails} from "./game-details/index"
-export class GameCard extends React.Component{
+import {  Card, Dimmer, Loader, Segment, Container  } from 'semantic-ui-react'
+import GameCard from "./game-card/GameCard.js";
+import GameFilter from "./game-filter/GameFilter.js";
+import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
+
+export class GameCardColection extends React.Component{
     constructor(props){
         super(props)
         this.state={
             games:[],
             loading: true,
             error: null,
+            sortByName:"",
+            sortByCity:"",
+            sortByPlayerCount:"",
+            date:0,
+            hideFullGames: true
         }
     }
-    componentDidMount(){
-        this.fetchData()
+    handleSortByName=(event)=>{
+      this.setState({
+        sortByName: event.target.value
+      })
     }
-    fetchData(){
+    handleSortByCity=(event)=>{
+      this.setState({
+        sortByCity: event.target.value
+      })
+    }
+    handleDateChange =(event, date)=> {
+      this.setState({date: date.value});
+    };
+    handleHideFullGames=()=>{
+      this.setState(prevState=>({
+        hideFullGames: !prevState.hideFullGames
+      }))
+    }
+    componentDidMount(){
+        this.fetchPlaysData()
+    }
+    fetchPlaysData(){
         fetch("/plays.json")
             .then(resp=>resp.json())
             .then(resp=>
@@ -26,35 +52,43 @@ export class GameCard extends React.Component{
             }))  
     }
     displayGameKind(){
-            return(this.state.games.map(game=>
-    <Card key={game.id}>
-      <Card.Content>
-        <Card.Header textAlign="center">{game.title}</Card.Header>
-        <Divider/>
-            <Card.Meta>{game.localization.city}</Card.Meta>
-        <Card.Description>
-              
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Approve
-          </Button>
-         <GameDetails 
-          title={game.title}
-          localization={game.localization.place}
-          date={game.date}
-          playerMax={game.palyer.max}  
-          playerCur={game.palyer.current}  
-          reqLvl={game.ReqLevelID}
-          descript={game.Description}
-         />
-        </div>
-      </Card.Content>
-    </Card> 
-     ))
-    }
+            return(
+              this.state.games
+              .filter(
+                game=>game.title.toLowerCase().includes(this.state.sortByName.toLowerCase()))
+              .filter(game=>game.localization.city.toLowerCase().includes(this.state.sortByCity.toLowerCase()))
+              .filter(game=>{
+                const pickedDate = new Date(this.state.date).getTime();
+                const pickedGameTostring = pickedDate.toString().substring(0,6)
+                const pickedGameBacktoNumber = parseInt(pickedGameTostring);
+                const gameDate= new Date(game.date).getTime();
+                const gameDateToString = gameDate.toString().substring(0,6);
+                const gameDateBackToNumber = parseInt(gameDateToString);
+                if(!pickedDate){
+                  return this.state.games
+                }else if(gameDateBackToNumber === pickedGameBacktoNumber)
+                  return game
+              })
+              .filter(game=>{
+                if(this.state.hideFullGames){
+                  return this.state.games
+                  }else if(game.palyer.max !== game.palyer.current){
+                return game}
+              })
+              .map(
+                game=>
+                <GameCard
+                  key={game.id}
+                  title={game.title}
+                  localization={game.localization.place}
+                  date={game.date}
+                  playerMax={game.palyer.max}  
+                  playerCur={game.palyer.current}  
+                  reqLvl={game.ReqLevelID}
+                  descript={game.Description}
+                />
+              )
+            )}
     render(){
       if(this.state.loading){
         return(
@@ -62,18 +96,23 @@ export class GameCard extends React.Component{
           <Dimmer active>
             <Loader size='massive'>Loading</Loader>
           </Dimmer>
-    
-          <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-          <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-          <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
         </Segment>
         )
       }else return(
-        
             <div>
-                <Card.Group margin="12px">
-                  {this.displayGameKind()}
-                </Card.Group>
+                <GameFilter 
+                sortByName={this.handleSortByName}
+                sortByCity={this.handleSortByCity}
+                onChange={this.handleDateChange}
+                onSlide={this.handleHideFullGames}
+                />
+                <Segment padded center inverted color="blue">
+                  <Container >
+                  <Card.Group className="ui centered grid" textAlign="center">
+                    {this.displayGameKind()}
+                  </Card.Group>
+                  </Container>
+                </Segment>
             </div>
         )
     }
