@@ -18,7 +18,7 @@ export default function Home() {
             <div className='Home__Charts'>
                 <UsersChart />
             </div>
-            <div></div>
+            <div style={{visibility: 'hidden'}}>m</div>
         </div>
     );
 };
