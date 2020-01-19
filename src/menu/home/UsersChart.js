@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 import {
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend
+  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
-
-import './UsersChart.css'
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active) {
@@ -80,17 +78,19 @@ export default class UsersChart extends PureComponent {
     };
 
     return (
-      <div>
+      <div className="Home__Charts--container">
         <div>Current number of registered users</div>
-        <AreaChart width={600} height={450} data={this.state.registeredUsers} >
-          <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="monthName" />
-          <YAxis />
-          <Tooltip content={<CustomTooltip />} />
-          <Area type="monotone" dataKey="newUsers" stackId="1" stroke="#8884d8" fill="#8884d8" />
-          <Area type="monotone" dataKey="totalUsers" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-        </AreaChart>
+        <ResponsiveContainer width={'100%'} height={450}>
+          <AreaChart data={this.state.registeredUsers} >
+            <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="monthName" />
+            <YAxis />
+            <Tooltip content={<CustomTooltip />} />
+            <Area type="monotone" dataKey="newUsers" stackId="1" stroke="#8884d8" fill="#8884d8" />
+            <Area type="monotone" dataKey="totalUsers" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+          </AreaChart>
+        </ResponsiveContainer>
       </div>
     );
   };
