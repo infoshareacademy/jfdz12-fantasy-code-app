@@ -81,7 +81,7 @@ export default class UsersChart extends PureComponent {
 
     return (
       <div>
-        <div>Current number of users</div>
+        <div>Current number of registered users</div>
         <AreaChart width={600} height={450} data={this.state.registeredUsers} >
           <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />
           <CartesianGrid strokeDasharray="3 3" />

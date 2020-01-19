@@ -144,7 +144,7 @@ export default class GamesChart extends PureComponent {
         <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
         <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
         <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={-8} dominantBaseline="central" textAnchor={textAnchor} fill="#333">{payload.name}</text>
-        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={10} dominantBaseline="central" textAnchor={textAnchor} fill="#333">{`Played ${value} times`}</text>
+        <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={10} dominantBaseline="central" textAnchor={textAnchor} fill="#333">{`${value} games`}</text>
       </g>
     );
   };
@@ -176,7 +176,7 @@ export default class GamesChart extends PureComponent {
 
     return (
       <div>
-        <div>Number of games by type played last month</div>
+        <div>Number of games played this month, by type</div>
         <PieChart width={600} height={450}>
           <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />
           <Pie
