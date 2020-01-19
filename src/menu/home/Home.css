@@ -21,10 +21,19 @@
     margin: 0.5rem 0;
     padding: 0.5rem 0;
     text-align: center;
-    background-color: #eddaa6;
+    font-weight: bold;
 }
+
 .Home__Functions--header > div {
     width: 25%;
+}
+
+.Home__Functions--header--1, .Home__Functions--description--2 {
+    background-color: #eddaa6;
+}
+
+.Home__Functions--header--2, .Home__Functions--description--1 {
+    background-color: #ccbc8f;
 }
 
 .Home__Functions--description {
@@ -35,26 +44,28 @@
     margin: 0.5rem 0;
     padding: 0.5rem 0;
     text-align: center;
-    background-color: #ccbc8f;
 }
 
 .Home__Functions--description > div {
     width: 25%;
 }
 
-.Home__Charts {
+.Home__Charts--container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    width: 50%;
-    float: left;
+    justify-content: center;
+    width: auto;
     text-align: center;
     background-color: #eddaa6;
 }
 
-.Home__Charts--container {
+.Home__Charts--items {
     width: 90%;
-    background-color: chartreuse;
+}
+
+.Home__Charts--items--Users, .Home__Charts--items--Games {
+    width: 90%;
 }
 
 .Home__Charts--UsersChart--tooltip--container {
@@ -70,28 +81,20 @@
     color: #82ca9d;
 }
 
-@media only screen and (min-width: 1462px) {
-
-}
-
-@media only screen and (max-width: 1451px) {
-
-}
-
-@media only screen and (max-width: 1317px) {
-
-}
-
-@media only screen and (max-width: 1119px) {
-
-}
-
-@media only screen and (max-width: 989px) {
-
-}
-
-@media only screen and (max-width: 908px) {
-
+@media only screen and (max-width: 1200px) {
+    .Home__Charts--container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        width: auto;
+        text-align: center;
+        background-color: #eddaa6;
+    }
+    
+    .Home__Charts--items {
+        width: 90%;
+    }
 }
 
 @media only screen and (max-width: 805px) {
@@ -100,31 +103,12 @@
         align-items: center;
     }
 
-    .Home__Functions--title {
+    .Home__Functions--header, .Home__Functions--description {
         display: block;
     }
 
-    .Home__Functions--title > div {
+    .Home__Functions--header > div, .Home__Functions--description > div {
         width: 100%;
     }
-
-    .Home__Functions--description {
-        display: block;
-    }
-
-    .Home__Functions--description > div {
-        width: 100%;
-    }
-}
-
-@media only screen and (max-width: 796px) {
-
-}
-
-@media only screen and (max-width: 768px) {
-
-}
-
-@media only screen and (max-width: 360px) {
 
 }

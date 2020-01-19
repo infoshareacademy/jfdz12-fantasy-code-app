@@ -78,7 +78,7 @@ export default class UsersChart extends PureComponent {
     };
 
     return (
-      <div className="Home__Charts--container">
+      <div className="Home__Charts--items--Users">
         <div>Current number of registered users</div>
         <ResponsiveContainer width={'100%'} height={450}>
           <AreaChart data={this.state.registeredUsers} >

@@ -175,7 +175,7 @@ export default class GamesChart extends PureComponent {
     };
 
     return (
-      <div className="Home__Charts--container">
+      <div className="Home__Charts--items--Games">
         <div>Number of games played this month, by type</div>
         <ResponsiveContainer width={'100%'} height={450}>
           <PieChart >

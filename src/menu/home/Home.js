@@ -12,11 +12,13 @@ export default function Home() {
             <div>
                 <Functions />
             </div>
-            <div className='Home__Charts'>
-                <GamesChart />
-            </div>
-            <div className='Home__Charts'>
-                <UsersChart />
+            <div className='Home__Charts--container'>
+                <div className='Home__Charts--items'>
+                    <GamesChart />
+                </div>
+                <div className='Home__Charts--items'>
+                    <UsersChart />
+                </div>
             </div>
         </div>
     );
