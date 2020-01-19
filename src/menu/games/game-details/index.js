@@ -1,23 +1,39 @@
 import React from "react";
-import { Button, Header, Icon, Modal } from 'semantic-ui-react'
+import { Button, Header, Icon, Modal, Container } from 'semantic-ui-react'
 
 
 export class GameDetails extends React.Component{
     render(){
         return(
             
-            <Modal trigger={<Button basic color="blue" size="large">Details</Button>} basic size='small'>
+            <Modal trigger={<Button basic color="blue" size="large">Details</Button>} basic size='small' closeIcon>
                 <Header icon='chess' content='Game Details' />
                     <Modal.Content>
+                        <Container fluid>
+                        
+                       <h3>
+                       Title:  {this.props.title}
+                       </h3>
                         <p>
-                        Title:  {this.props.title}<br/>
-                        Localization:  {this.props.localization}<br/>
-                        Date:  {this.props.date}<br/>
-                        Players:  {this.props.playerCur} /{this.props.playerMax}<br/>
-                        ReQuired Level:  {this.props.reqLvl}<br/>
-                        {this.props.descript}
-
+                        Localization:  {this.props.localization}
                         </p>
+                        <p>
+                        Date:  {this.props.date}
+                        </p>
+                        <p>
+                           Players:  {this.props.playerCur} /{this.props.playerMax}
+                        </p>
+                        <p>
+                        ReQuired Level:  {this.props.reqLvl}
+                        </p>
+                        <p>
+                        {this.props.descript}
+                        </p>
+                        
+
+                        
+                        </Container>
+                        
                     </Modal.Content>
                 <Modal.Actions>
                     <Button basic color='red' inverted>
