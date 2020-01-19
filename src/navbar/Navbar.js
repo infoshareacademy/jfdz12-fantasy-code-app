@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { Menu, Segment, Input, Icon } from 'semantic-ui-react'
+import { Menu, Segment, Container, Icon } from 'semantic-ui-react'
 import Links from './Links';
 
 export default class MenuSecondaryPointing extends Component {
@@ -12,7 +12,7 @@ export default class MenuSecondaryPointing extends Component {
         const { activeItem } = this.state
 
         return (
-            <div>
+            <Container>
                 <Menu pointing secondary size='massive' color='blue'>
                     <Link to="/">
                         <Menu.Item
@@ -38,16 +38,9 @@ export default class MenuSecondaryPointing extends Component {
                         />
                     </Link>
                     <Menu.Menu position='right' color='blue'>
-                        <Menu.Item>
-                            <Input
-                                transparent
-                                icon={{ name: 'search', link: true }}
-                                placeholder='Search...'
-                            />
-                        </Menu.Item>
                         <Menu.Item
-                            name='logout'
-                            active={activeItem === 'logout'}
+                            name='login'
+                            active={activeItem === 'login'}
                             onClick={this.handleItemClick}
                         />
                     </Menu.Menu>
@@ -56,7 +49,7 @@ export default class MenuSecondaryPointing extends Component {
                 <Segment>
                     <Links />
                 </Segment>
-            </div>
+            </Container>
         )
     }
 }

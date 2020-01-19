@@ -13,11 +13,11 @@ export class PlayerList extends React.Component {
             value: '',
         }
     }
-    handleSubmit=(event)=>{
+    handleSubmit = (event) => {
         this.setState({
-          value: event.target.value
+            value: event.target.value
         })
-      }
+    }
     componentDidMount() {
         this.fetchData()
     }
@@ -37,30 +37,35 @@ export class PlayerList extends React.Component {
     displayPlayersList() {
         return (
             this.state.playersList
-            .filter(player=>
-                player.nick.toLocaleLowerCase().includes(this.state.value.toLocaleLowerCase()))
-            .map(player =>
-            <Card key={player.id}>
-                <Image src={player.avatar} wrapped ui={false} />
-                <Card.Content>
-                    <Card.Header>{player.nick}</Card.Header>
-                    <Card.Meta>
-                        {player.levelID}
-                    </Card.Meta>
-                    <Card.Description>
-                        {player.nick[0].toUpperCase() + player.nick.slice(1)}
-                        is a {player.class[0].toLowerCase() + player.class.slice(1) + " "}
-                        living in {player.city}.
+                .filter(player =>
+                    player.nick.toLocaleLowerCase().includes(this.state.value.toLocaleLowerCase()))
+                .map(player =>
+                    <Card key={player.id}>
+                        <Image src={player.avatar} wrapped ui={false} />
+                        <Card.Content>
+                            <Card.Header>{player.nick}</Card.Header>
+                            <Card.Meta>
+                                {player.levelID}
+                            </Card.Meta>
+                            <Card.Description>
+                                {player.nick[0].toUpperCase() + player.nick.slice(1)}
+                                is a {player.class[0].toLowerCase() + player.class.slice(1) + " "}
+                                living in {player.city}.
                   </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-                    </a>
-                </Card.Content>
-            </Card>
-        ))
+                        </Card.Content>
+                        <Card.Content extra>
+                            <div className='ui grid'>
+                                <a>
+                                    <Icon name='user' />
+                                    {player.friends}
+                                </a>
+                                <a>
+                                    <Icon name='heart' color="red" />
+                                </a>
+                            </div>
+                        </Card.Content>
+                    </Card>
+                ))
     }
     render() {
         if (this.state.loading) {
@@ -80,7 +85,7 @@ export class PlayerList extends React.Component {
                 <Container>
                     <PlayersFilter onChange={this.handleSubmit} />
                 </Container>
-                
+
                 <Segment inverted color="black">
                     <Container fluid>
                         <Card.Group className="ui centered rgrid" textAlign="center">
