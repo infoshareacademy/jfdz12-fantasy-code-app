@@ -1,19 +1,20 @@
 .Home {
-    background-color: #f5db93;
+    background-color: #2185d0;
 }
 
 .Home__Welcome {
     margin: 0.5rem 0;
     padding: 0.5rem;
     text-align: center;
-    background-color: #ccbc8f;
+    font-weight: bold;
 }
 
 .Home__Functions--container {
-    background-color: #f5db93;
+    margin: 0.5rem;
+    padding: 0.5rem
 }
 
-.Home__Functions--header {
+.Home__Functions--items {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -24,30 +25,17 @@
     font-weight: bold;
 }
 
-.Home__Functions--header > div {
+.Home__Functions--items > div {
     width: 25%;
 }
 
 .Home__Functions--header--1, .Home__Functions--description--2 {
-    background-color: #eddaa6;
+    background-color: white;
 }
 
 .Home__Functions--header--2, .Home__Functions--description--1 {
-    background-color: #ccbc8f;
-}
-
-.Home__Functions--description {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    margin: 0.5rem 0;
-    padding: 0.5rem 0;
-    text-align: center;
-}
-
-.Home__Functions--description > div {
-    width: 25%;
+    background-color: black;
+    color: white;
 }
 
 .Home__Charts--container {
@@ -98,6 +86,10 @@
 }
 
 @media only screen and (max-width: 805px) {
+    .Home__Welcome {
+        font-size: 1rem;
+    }
+    
     .Home__Functions--container {
         display: flex;
         align-items: center;
