@@ -10,9 +10,9 @@ export default function Home() {
     return (
         <Container>
             <div className='Home'>
-                <div className='Home__Welcome'>
+                <div className='Home__Welcome--container'>
                     <h1>Welcome to Board App!</h1>
-                    <h2>Game yourself!</h2>
+                    <h2 className='Home__Welcome--h2'>Game yourself!</h2>
                 </div>
                 <div>
                     <Functions />

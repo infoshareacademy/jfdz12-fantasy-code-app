@@ -2,11 +2,16 @@
     background-color: #2185d0;
 }
 
-.Home__Welcome {
+.Home__Welcome--container {
     margin: 0.5rem 0;
     padding: 0.5rem;
     text-align: center;
     font-weight: bold;
+}
+
+.Home__Welcome--h2 {
+    color: white;
+    margin-top: 0;
 }
 
 .Home__Functions--container {
@@ -17,25 +22,45 @@
 .Home__Functions--items {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
     margin: 0.5rem 0;
     padding: 0.5rem 0;
     text-align: center;
-    font-weight: bold;
 }
 
 .Home__Functions--items > div {
-    width: 25%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
 }
 
-.Home__Functions--header--1, .Home__Functions--description--2 {
+.ui.visible.content {
+    display: flex;
+    width: 100%;
+}
+
+.Home__Functions--header--1 {
+    font-weight: bold;
     background-color: white;
+    margin-bottom: 0;
 }
 
-.Home__Functions--header--2, .Home__Functions--description--1 {
+.Home__Functions--header--2 {
+    font-weight: bold;
     background-color: black;
     color: white;
+    margin-bottom: 0;
+}
+
+.Home__Functions--description--1 {
+    background-color: black;
+    color: white;
+}
+
+.Home__Functions--description--2 {
+    background-color: white;
 }
 
 .Home__Charts--container {
