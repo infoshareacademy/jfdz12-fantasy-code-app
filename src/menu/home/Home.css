@@ -72,6 +72,10 @@
     text-align: center;
 }
 
+.xAxis, .yAxis, .recharts-cartesian-axis-tick > text {
+    stroke: #ccc;
+}
+
 .Home__Charts--items {
     width: 90%;
 }
