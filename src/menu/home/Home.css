@@ -70,7 +70,6 @@
     justify-content: center;
     width: auto;
     text-align: center;
-    background-color: #eddaa6;
 }
 
 .Home__Charts--items {
@@ -101,8 +100,7 @@
         justify-content: center;
         justify-items: center;
         width: auto;
-        text-align: center;
-        background-color: #eddaa6;
+        text-align: center;;
     }
     
     .Home__Charts--items {
