@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell, Legend, Sector, ResponsiveContainer } from 'recharts';
 
-const COLORS = ['#0088FE', '#00E49F', '#8884d8', '#82ca9d'];
+const COLORS = ['#eddaa6', '#00E49F', '#f2d43f', '#82ca9d'];
 const RADIAN = Math.PI / 180;
 
 export default class GamesChart extends PureComponent {
@@ -100,7 +100,7 @@ export default class GamesChart extends PureComponent {
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
   
     return (
-      <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+      <text x={x} y={y} fill="black" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
         {`${(percent * 100).toFixed(0)}%`}
       </text>
     );
