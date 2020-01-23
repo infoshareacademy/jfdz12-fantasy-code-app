@@ -1,5 +1,6 @@
 import React from 'react';
 import { Reveal, Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 export default function Functions () {
     return (
@@ -12,7 +13,9 @@ export default function Functions () {
                         <p className='Home__Functions--description--1'>Browse, join, appear and play!</p>
                     </Reveal.Content>
                     <Reveal.Content hidden>
-                        <h3 className='Home__Functions--description--2'>Browse by game type or title, city or venue. Check who's already in, join if you're deemed worthy, and have fun playing!</h3>
+                        <Link to="/games">
+                            <h3 className='Home__Functions--description--2'>Browse by game type or title, city or venue. Check who's already in, join if you're deemed worthy, and have fun playing!</h3>
+                        </Link>
                     </Reveal.Content>
                 </Reveal>
                 <Reveal animated='move'>
@@ -22,7 +25,10 @@ export default function Functions () {
                         <p className='Home__Functions--description--2'>Set up table and invite players!</p>
                     </Reveal.Content>
                     <Reveal.Content hidden>
-                        <h3 className='Home__Functions--description--1'>Pick game title, set number and required level of players, pick date location, reserve table, invite friends or wait for new ones to make. And have fun playing!</h3>
+                        <Link to="/games">
+                        {/* Preferably link directly to New Game view */}
+                            <h3 className='Home__Functions--description--1'>Pick game title, set number and required level of players, pick date location, reserve table, invite friends or wait for new ones to make. And have fun playing!</h3>
+                        </Link>
                     </Reveal.Content>
                 </Reveal>
                 <Reveal animated='move'>
@@ -32,7 +38,9 @@ export default function Functions () {
                         <p className='Home__Functions--description--1'>Rate players and mark friends!</p>
                     </Reveal.Content>
                     <Reveal.Content hidden>
-                        <h3 className='Home__Functions--description--2'>Browse through our registered users database to mark friends, rate players and invite opponents to your open games!</h3>
+                        <Link to="/players">
+                            <h3 className='Home__Functions--description--2'>Browse through our registered users database to mark friends, rate players and invite opponents to your open games!</h3>
+                        </Link>
                     </Reveal.Content>
                 </Reveal>
                 <Reveal animated='move'>
@@ -42,7 +50,10 @@ export default function Functions () {
                         <p className='Home__Functions--description--2'>Reserve a table for your game!</p>
                     </Reveal.Content>
                     <Reveal.Content hidden>
-                    <h3 className='Home__Functions--description--1'>Tired of looking for game-friendly pub? Browse through our database, select venues and book tables for your games!</h3>
+                        <Link to="/">
+                            {/* Preferably link directly to Browse locations view */}
+                            <h3 className='Home__Functions--description--1'>Tired of looking for game-friendly pub? Browse through our database, select venues and book tables for your games!</h3>
+                        </Link>
                     </Reveal.Content>
                 </Reveal>
             </div>
