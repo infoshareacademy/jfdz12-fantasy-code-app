@@ -8,9 +8,9 @@ export default function Functions () {
             <div className='Home__Functions--items'>
                 <Reveal animated='move'>
                     <Reveal.Content visible>
-                        <h3 className='Home__Functions--header--1'>Join open games</h3>
+                        <h3 className='Home__Functions--header--1'>Join an open game</h3>
                         <Image src='https://react.semantic-ui.com/images/avatar/large/chris.jpg' size='medium' />
-                        <p className='Home__Functions--description--1'>Browse, join, appear and play!</p>
+                        <p className='Home__Functions--description--1'>Browse games, join and play!</p>
                     </Reveal.Content>
                     <Reveal.Content hidden>
                         <Link to="/games">
@@ -27,13 +27,13 @@ export default function Functions () {
                     <Reveal.Content hidden>
                         <Link to="/games">
                         {/* Preferably link directly to New Game view */}
-                            <h3 className='Home__Functions--description--1'>Pick game title, set number and required level of players, pick date location, reserve table, invite friends or wait for new ones to make. And have fun playing!</h3>
+                            <h3 className='Home__Functions--description--1'>Pick game title, pick date and location, reserve table, set number and required level of players, invite friends or wait for new ones to make. And have fun playing!</h3>
                         </Link>
                     </Reveal.Content>
                 </Reveal>
                 <Reveal animated='move'>
                     <Reveal.Content visible>
-                        <h3 className='Home__Functions--header--1'>Make friends</h3>
+                        <h3 className='Home__Functions--header--1'>Find and make friends</h3>
                         <Image src='https://react.semantic-ui.com/images/avatar/large/chris.jpg' size='medium' />
                         <p className='Home__Functions--description--1'>Rate players and mark friends!</p>
                     </Reveal.Content>
