@@ -85,16 +85,16 @@
 }
 
 .Home__Charts--UsersChart--tooltip--container {
-    background-color: white;
+    background-color: #1b7a6e;
     margin: 1px black;
 }
 
 .Home__Charts--UsersChart--tooltip--intro1 {
-    color: #8884d8;
+    color: #00E49F;
 }
 
 .Home__Charts--UsersChart--tooltip--intro2 {
-    color: #82ca9d;
+    color: #f2d43f;
 }
 
 @media only screen and (max-width: 1200px) {
