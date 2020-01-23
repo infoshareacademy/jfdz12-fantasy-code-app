@@ -79,7 +79,7 @@ export default class UsersChart extends PureComponent {
 
     return (
       <div className="Home__Charts--items--Users">
-        <h3>Did you know: How many users we have?</h3>
+        <h3 className="Home__Charts--title">Did you know: How many users we have?</h3>
         <ResponsiveContainer width={'100%'} height={450}>
           <AreaChart data={this.state.registeredUsers} >
             <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />

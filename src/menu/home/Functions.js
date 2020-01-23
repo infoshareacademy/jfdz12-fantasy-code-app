@@ -42,7 +42,7 @@ export default function Functions () {
                         <p className='Home__Functions--description--2'>Reserve a table for your game!</p>
                     </Reveal.Content>
                     <Reveal.Content hidden>
-                    <h3 className='Home__Functions--description--2'>Tired of looking for game-friendly pub? Browse through our database, select venues and book tables for your games!</h3>
+                    <h3 className='Home__Functions--description--1'>Tired of looking for game-friendly pub? Browse through our database, select venues and book tables for your games!</h3>
                     </Reveal.Content>
                 </Reveal>
             </div>

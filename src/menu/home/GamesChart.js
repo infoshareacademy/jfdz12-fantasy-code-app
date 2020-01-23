@@ -91,7 +91,7 @@ export default class GamesChart extends PureComponent {
 
   renderColorfulLegendText (value, entry) {
     const { color } = entry;
-    return <span style={{ color }}>{value}</span>;
+    return <span style={{ color, fontWeight: "bold" }}>{value}</span>;
   };
 
   renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
@@ -176,7 +176,7 @@ export default class GamesChart extends PureComponent {
 
     return (
       <div className="Home__Charts--items--Games">
-        <h3>Games played this month. Thank you for playing!</h3>
+        <h3 className="Home__Charts--title">Did you know: how many board games have been played this month?</h3>
         <ResponsiveContainer width={'100%'} height={450}>
           <PieChart >
             <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />
@@ -185,11 +185,11 @@ export default class GamesChart extends PureComponent {
               activeShape={this.renderActiveShape}
               onMouseEnter={this.onPieEnter}
               data={this.state.playedGamesByKind}
-              cx={'50%'}
+              cx={'45%'}
               cy={'50%'}
               labelLine={false}
               label={this.renderCustomizedLabel}
-              outerRadius={160}
+              outerRadius={150}
               fill="#8884d8"
               dataKey="playedGames"
             >

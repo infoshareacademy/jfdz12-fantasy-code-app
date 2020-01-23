@@ -70,6 +70,7 @@
     justify-content: center;
     width: auto;
     text-align: center;
+    border-top: white solid 1px;
 }
 
 .xAxis, .yAxis, .recharts-cartesian-axis-tick > text {
@@ -77,7 +78,14 @@
 }
 
 .Home__Charts--items {
+    display: flex;
+    justify-content: center;
     width: 90%;
+}
+
+.Home__Charts--title {
+    height: 50px;
+    margin-top: 14px;
 }
 
 .Home__Charts--items--Users, .Home__Charts--items--Games {
