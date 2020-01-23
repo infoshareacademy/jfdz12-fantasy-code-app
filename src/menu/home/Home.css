@@ -80,6 +80,7 @@
 
 .Home__Charts--items {
     display: flex;
+    align-items: center;
     justify-content: center;
     width: 90%;
 }
@@ -110,9 +111,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        justify-items: center;
         width: auto;
-        text-align: center;;
+        text-align: center;
+        border-top: white solid 1px;
+        padding-top: 14px;
+    }
+
+    .Home__Charts--title {
+        height: 30px;
     }
     
     .Home__Charts--items {
@@ -120,9 +126,15 @@
     }
 }
 
+@media only screen and (max-width: 1000px) {
+    .Home__Functions--header--1, .Home__Functions--header--2 {
+        height: 45px;
+    }
+}
+
 @media only screen and (max-width: 805px) {
-    .Home__Welcome {
-        font-size: 1rem;
+    .Home__Functions--header--1, .Home__Functions--header--2, .Home__Functions--description--1, .Home__Functions--description--2 {
+        font-weight: normal;
     }
     
     .Home__Functions--container {
@@ -137,5 +149,10 @@
     .Home__Functions--header > div, .Home__Functions--description > div {
         width: 100%;
     }
+}
 
+@media only screen and (max-width: 700px) {
+    .Home__Functions--description--1, .Home__Functions--description--2 {
+        font-size: 1rem;
+    }
 }
