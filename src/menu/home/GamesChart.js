@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell, Legend, Sector, ResponsiveContainer } from 'recharts';
 
-const COLORS = ['#0088FE', '#00E49F', '#8884d8', '#82ca9d'];
+const COLORS = ['#eddaa6', '#00E49F', '#f2d43f', '#82ca9d'];
 const RADIAN = Math.PI / 180;
 
 export default class GamesChart extends PureComponent {
@@ -91,7 +91,7 @@ export default class GamesChart extends PureComponent {
 
   renderColorfulLegendText (value, entry) {
     const { color } = entry;
-    return <span style={{ color }}>{value}</span>;
+    return <span style={{ color, fontWeight: "bold" }}>{value}</span>;
   };
 
   renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
@@ -100,7 +100,7 @@ export default class GamesChart extends PureComponent {
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
   
     return (
-      <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+      <text x={x} y={y} fill="black" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
         {`${(percent * 100).toFixed(0)}%`}
       </text>
     );
@@ -176,7 +176,7 @@ export default class GamesChart extends PureComponent {
 
     return (
       <div className="Home__Charts--items--Games">
-        <div>Number of games played this month, by type</div>
+        <h3 className="Home__Charts--title">Did you know: how many board games have been played this month?</h3>
         <ResponsiveContainer width={'100%'} height={450}>
           <PieChart >
             <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />
@@ -185,11 +185,11 @@ export default class GamesChart extends PureComponent {
               activeShape={this.renderActiveShape}
               onMouseEnter={this.onPieEnter}
               data={this.state.playedGamesByKind}
-              cx={'50%'}
+              cx={'45%'}
               cy={'50%'}
               labelLine={false}
               label={this.renderCustomizedLabel}
-              outerRadius={160}
+              outerRadius={150}
               fill="#8884d8"
               dataKey="playedGames"
             >
