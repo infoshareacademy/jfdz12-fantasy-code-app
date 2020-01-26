@@ -22,17 +22,29 @@ export class PlayerList extends React.Component {
         this.fetchData()
     }
     fetchData() {
-        fetch("/players.json")
+        // https://fantasyapp-9473b.firebaseio.com
+        fetch("https://fantasyapp-9473b.firebaseio.com/players.json")
             .then(resp => resp.json())
-            .then(resp =>
+            .then(data => {
+                const keys = Object.keys(data);
+                const formattedData = keys.map(key => {
+                    return {
+                        id: key,
+                        ...data[key]
+                    }
+                })
                 this.setState({
-                    playersList: resp,
-                    loading: false
-                }))
+                    playersList: formattedData,
+                    loading: false,
+                })
+            })
             .catch(error => this.setState({
-                error: "err occ"
-            }))
-    }
+                error: "err occ",
+                loading: false,
+            }));
+
+
+    };
 
     displayPlayersList() {
         return (
