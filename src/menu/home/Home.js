@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from 'semantic-ui-react';
 
 import Functions from './Functions';
 import UsersChart from './UsersChart';
@@ -7,20 +8,25 @@ import './Home.css';
 
 export default function Home() {
     return (
-        <div className='Home'>
-            <div className='Home__Welcome'>Welcome to Board App! Feel free to look around!</div>
-            <div>
-                <Functions />
-            </div>
-            <div className='Home__Charts--container'>
-                <div className='Home__Charts--items'>
-                    <GamesChart />
+        <Container>
+            <div className='Home'>
+                <div className='Home__Welcome--container'>
+                    <h1>Welcome to Board App!</h1>
+                    <h2 className='Home__Welcome--h2'>Game yourself!</h2>
                 </div>
-                <div className='Home__Charts--items'>
-                    <UsersChart />
+                <div>
+                    <Functions />
                 </div>
+                <div className='Home__Charts--container'>
+                    <div className='Home__Charts--items'>
+                        <GamesChart />
+                    </div>
+                    <div className='Home__Charts--items'>
+                        <UsersChart />
+                    </div>
+                </div>
+                <div style={{visibility: 'hidden'}}>m</div>
             </div>
-            <div style={{visibility: 'hidden'}}>m</div>
-        </div>
+        </Container>
     );
 };

@@ -55,7 +55,7 @@ export default class UsersChart extends PureComponent {
     const { color } = entry;
     const dataLabel = value;
     const dataLabelTransformed = dataLabel.charAt(0).toUpperCase() + dataLabel.slice(1, dataLabel.length-5) + ' ' + dataLabel.slice(dataLabel.length-5);
-    return <span style={{ color }}>{dataLabelTransformed}</span>;
+    return <span style={{ color, fontWeight: "bold" }}>{dataLabelTransformed}</span>;
   };
 
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/c1rLyqj1/';
@@ -79,7 +79,7 @@ export default class UsersChart extends PureComponent {
 
     return (
       <div className="Home__Charts--items--Users">
-        <div>Current number of registered users</div>
+        <h3 className="Home__Charts--title">Did you know: How many users we have?</h3>
         <ResponsiveContainer width={'100%'} height={450}>
           <AreaChart data={this.state.registeredUsers} >
             <Legend verticalAlign="top" width='100%' height={30} formatter={this.renderColorfulLegendText} />
@@ -87,8 +87,8 @@ export default class UsersChart extends PureComponent {
             <XAxis dataKey="monthName" />
             <YAxis />
             <Tooltip content={<CustomTooltip />} />
-            <Area type="monotone" dataKey="newUsers" stackId="1" stroke="#8884d8" fill="#8884d8" />
-            <Area type="monotone" dataKey="totalUsers" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+            <Area type="monotone" dataKey="newUsers" stackId="1" stroke="#00E49F" fill="#00E49F" />
+            <Area type="monotone" dataKey="totalUsers" stackId="1" stroke="#f2d43f" fill="#f2d43f" />
           </AreaChart>
         </ResponsiveContainer>
       </div>

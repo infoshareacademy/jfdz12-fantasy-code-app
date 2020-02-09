@@ -1,53 +1,66 @@
 .Home {
-    background-color: #f5db93;
+    background-color: #2185d0;
 }
 
-.Home__Welcome {
+.Home__Welcome--container {
     margin: 0.5rem 0;
     padding: 0.5rem;
-    text-align: center;
-    background-color: #ccbc8f;
-}
-
-.Home__Functions--container {
-    background-color: #f5db93;
-}
-
-.Home__Functions--header {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    margin: 0.5rem 0;
-    padding: 0.5rem 0;
     text-align: center;
     font-weight: bold;
 }
 
-.Home__Functions--header > div {
-    width: 25%;
+.Home__Welcome--h2 {
+    color: white;
+    margin-top: 0;
 }
 
-.Home__Functions--header--1, .Home__Functions--description--2 {
-    background-color: #eddaa6;
+.Home__Functions--container {
+    margin: 0.5rem;
+    padding: 0.5rem
 }
 
-.Home__Functions--header--2, .Home__Functions--description--1 {
-    background-color: #ccbc8f;
-}
-
-.Home__Functions--description {
+.Home__Functions--items {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
     margin: 0.5rem 0;
     padding: 0.5rem 0;
     text-align: center;
 }
 
-.Home__Functions--description > div {
-    width: 25%;
+.Home__Functions--items > div {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.ui.visible.content {
+    display: flex;
+    width: 100%;
+}
+
+.Home__Functions--header--1 {
+    font-weight: bold;
+    background-color: white;
+    margin-bottom: 0;
+}
+
+.Home__Functions--header--2 {
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    margin-bottom: 0;
+}
+
+.Home__Functions--description--1 {
+    background-color: black;
+    color: white;
+}
+
+.Home__Functions--description--2 {
+    background-color: white;
 }
 
 .Home__Charts--container {
@@ -57,11 +70,23 @@
     justify-content: center;
     width: auto;
     text-align: center;
-    background-color: #eddaa6;
+    border-top: white solid 1px;
+    padding-top: 14px;
+}
+
+.xAxis, .yAxis, .recharts-cartesian-axis-tick > text {
+    stroke: #ccc;
 }
 
 .Home__Charts--items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 90%;
+}
+
+.Home__Charts--title {
+    height: 50px;
 }
 
 .Home__Charts--items--Users, .Home__Charts--items--Games {
@@ -69,16 +94,16 @@
 }
 
 .Home__Charts--UsersChart--tooltip--container {
-    background-color: white;
+    background-color: #1b7a6e;
     margin: 1px black;
 }
 
 .Home__Charts--UsersChart--tooltip--intro1 {
-    color: #8884d8;
+    color: #00E49F;
 }
 
 .Home__Charts--UsersChart--tooltip--intro2 {
-    color: #82ca9d;
+    color: #f2d43f;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -86,10 +111,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        justify-items: center;
         width: auto;
         text-align: center;
-        background-color: #eddaa6;
+        border-top: white solid 1px;
+        padding-top: 14px;
+    }
+
+    .Home__Charts--title {
+        height: 30px;
     }
     
     .Home__Charts--items {
@@ -97,7 +126,17 @@
     }
 }
 
+@media only screen and (max-width: 1000px) {
+    .Home__Functions--header--1, .Home__Functions--header--2 {
+        height: 45px;
+    }
+}
+
 @media only screen and (max-width: 805px) {
+    .Home__Functions--header--1, .Home__Functions--header--2, .Home__Functions--description--1, .Home__Functions--description--2 {
+        font-weight: normal;
+    }
+    
     .Home__Functions--container {
         display: flex;
         align-items: center;
@@ -110,5 +149,10 @@
     .Home__Functions--header > div, .Home__Functions--description > div {
         width: 100%;
     }
+}
 
+@media only screen and (max-width: 700px) {
+    .Home__Functions--description--1, .Home__Functions--description--2 {
+        font-size: 1rem;
+    }
 }
