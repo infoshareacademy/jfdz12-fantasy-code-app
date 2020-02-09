@@ -56,9 +56,6 @@ export class PlayerList extends React.Component {
                         <Image src={player.avatar} wrapped ui={false} />
                         <Card.Content>
                             <Card.Header>{player.nick}</Card.Header>
-                            <Card.Meta>
-                                {player.levelID}
-                            </Card.Meta>
                             <Card.Description>
                                 {player.nick[0].toUpperCase() + player.nick.slice(1)}
                                 is a {player.class[0].toLowerCase() + player.class.slice(1) + " "}
