@@ -1,6 +1,10 @@
 import React from 'react';
 import { Reveal, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import img1 from "../../assets/icons/join.png";
+import img2 from "../../assets/icons/open.png";
+import img3 from "../../assets/icons/friends.png";
+import img4 from "../../assets/icons/spot.png";
 
 export default function Functions () {
     return (
@@ -9,7 +13,7 @@ export default function Functions () {
                 <Reveal animated='move'>
                     <Reveal.Content visible>
                         <h3 className='Home__Functions--header--1'>Join an open game</h3>
-                        <Image src='https://react.semantic-ui.com/images/avatar/large/chris.jpg' size='medium' />
+                        <Image src={img1} size='medium' />
                         <p className='Home__Functions--description--1'>Browse games, join and play!</p>
                     </Reveal.Content>
                     <Reveal.Content hidden>
@@ -21,7 +25,7 @@ export default function Functions () {
                 <Reveal animated='move'>
                     <Reveal.Content visible>
                         <h3 className='Home__Functions--header--2'>Open your own game</h3>
-                        <Image src='https://react.semantic-ui.com/images/avatar/large/chris.jpg' size='medium' />
+                        <Image src={img2} size='medium' />
                         <p className='Home__Functions--description--2'>Set up table and invite players!</p>
                     </Reveal.Content>
                     <Reveal.Content hidden>
@@ -34,7 +38,7 @@ export default function Functions () {
                 <Reveal animated='move'>
                     <Reveal.Content visible>
                         <h3 className='Home__Functions--header--1'>Find and make friends</h3>
-                        <Image src='https://react.semantic-ui.com/images/avatar/large/chris.jpg' size='medium' />
+                        <Image src={img3} size='medium' />
                         <p className='Home__Functions--description--1'>Rate players and mark friends!</p>
                     </Reveal.Content>
                     <Reveal.Content hidden>
@@ -46,7 +50,7 @@ export default function Functions () {
                 <Reveal animated='move'>
                     <Reveal.Content visible>
                         <h3 className='Home__Functions--header--2'>Find game-friendly spots</h3>
-                        <Image src='https://react.semantic-ui.com/images/avatar/large/chris.jpg' size='medium' />
+                        <Image src={img4} size='medium' />
                         <p className='Home__Functions--description--2'>Reserve a table for your game!</p>
                     </Reveal.Content>
                     <Reveal.Content hidden>
