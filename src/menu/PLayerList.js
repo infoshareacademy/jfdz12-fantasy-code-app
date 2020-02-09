@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Icon, Image, Segment, Dimmer, Loader, Container } from 'semantic-ui-react';
-import PlayersFilter from './player-list/PlayersFilter';
+import PlayersFilter from './player-list/players-filter/PlayersFilter';
 
 
 export class PlayerList extends React.Component {
