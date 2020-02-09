@@ -6,11 +6,10 @@ export class GameDetails extends React.Component{
     render(){
         return(
             
-            <Modal trigger={<Button basic color="blue" size="large">Details</Button>} basic size='small' closeIcon>
+            <Modal trigger={<Button  color="orange" size="large">Details</Button>} basic size='small' closeIcon>
                 <Header icon='chess' content='Game Details' />
                     <Modal.Content>
                         <Container fluid>
-                        
                        <h3>
                        Title:  {this.props.title}
                        </h3>
@@ -29,11 +28,7 @@ export class GameDetails extends React.Component{
                         <p>
                         {this.props.descript}
                         </p>
-                        
-
-                        
                         </Container>
-                        
                     </Modal.Content>
                 <Modal.Actions>
                     <Button basic color='red' inverted>

@@ -4,6 +4,7 @@ import GameCard from "./game-card/GameCard.js";
 import GameFilter from "./game-filter/GameFilter.js";
 import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 
+
 export class GameCardColection extends React.Component{
     constructor(props){
         super(props)
@@ -39,18 +40,28 @@ export class GameCardColection extends React.Component{
     componentDidMount(){
         this.fetchPlaysData()
     }
+    handleOnAdd = () => {
+      this.fetchPlaysData()
+    }
     fetchPlaysData(){
-        fetch("/plays.json")
+        fetch("https://fantasyapp-9473b.firebaseio.com/plays.json")
             .then(resp=>resp.json())
-            .then(resp=>
+            .then(resp=> {
                this.setState({
-                    games: resp,
+                    games:  Object.keys(resp)
+                    .map(function(key) {
+                        return {
+                            id: key,
+                            ...resp[key]
+                        }
+                    }),
                     loading:false
-               })) 
+               })}) 
             .catch(error=>this.setState({
                 error:"err occ"
             }))  
     }
+  
     displayGameKind(){
             return(
               this.state.games
@@ -80,7 +91,8 @@ export class GameCardColection extends React.Component{
                 <GameCard
                   key={game.id}
                   title={game.title}
-                  localization={game.localization.place}
+                  localizationCity={game.localization.city}
+                  localizationPlace={game.localization.place}
                   date={game.date}
                   playerMax={game.palyer.max}  
                   playerCur={game.palyer.current}  
@@ -101,6 +113,7 @@ export class GameCardColection extends React.Component{
       }else return(
             <div>
                 <GameFilter 
+                onAdd={this.handleOnAdd}
                 sortByName={this.handleSortByName}
                 sortByCity={this.handleSortByCity}
                 onChange={this.handleDateChange}
@@ -108,7 +121,7 @@ export class GameCardColection extends React.Component{
                 />
                 <Segment center inverted color="blue">
                   <Container >
-                  <Card.Group className="ui centered grid" textAlign="center">
+                  <Card.Group centered>
                     {this.displayGameKind()}
                   </Card.Group>
                   </Container>
