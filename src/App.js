@@ -10,10 +10,14 @@ import 'firebase/auth';
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const firebaseAppAuth = firebaseApp.auth();
 
-const providers = firebase.auth.EmailAuthProvider.credential(
-  email,
-  password
-);
+const providers = {
+  googleProvider: new firebase.auth.GoogleAuthProvider(),
+};
+
+// const providers = firebase.auth.EmailAuthProvider.credential(
+//   email,
+//   password
+// );
 
 export class App extends React.Component {
   constructor(props) {
