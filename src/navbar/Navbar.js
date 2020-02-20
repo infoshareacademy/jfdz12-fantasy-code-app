@@ -46,7 +46,7 @@ export default class MenuSecondaryPointing extends Component {
                     </Menu.Menu>
                 </Menu>
 
-                <Segment>
+                <Segment >
                     <Links />
                 </Segment>
             </Container>
