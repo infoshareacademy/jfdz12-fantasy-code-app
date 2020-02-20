@@ -45,6 +45,13 @@ export default class MenuSecondaryPointing extends Component {
                                 onClick={this.handleItemClick}
                             />
                         </Link>
+                        <Link to="/loggedout">
+                            <Menu.Item
+                                name='loggedout'
+                                active={activeItem === 'loggedout'}
+                                onClick={this.handleItemClick}
+                            />
+                        </Link>
                     </Menu.Menu>
                 </Menu>
 

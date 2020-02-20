@@ -20,6 +20,9 @@ export default () => (
         <Route path="/login">
             <LoginPage />
         </Route>
+        <Route path="/loggedout">
+            <LoginPage />
+        </Route>
         <Route path="/register">
             <RegisterPage />
         </Route>
