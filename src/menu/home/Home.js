@@ -6,6 +6,8 @@ import UsersChart from './UsersChart';
 import GamesChart from './GamesChart';
 import './Home.css';
 
+export const DATABASE_URL = 'https://fantasyapp-9473b.firebaseio.com/';
+
 export default function Home() {
     return (
         <Container>
