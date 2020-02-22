@@ -4,7 +4,7 @@ import GameForm from "./GameForm"
 
 const NewGameFormModal = (props) => (
   <Modal trigger={<Button>Create New Game</Button>}>
-    <Modal.Header>Create New Game</Modal.Header>
+    <Modal.Header className="grid ui centered">Create New Game</Modal.Header>
     <Modal.Content >
         <GameForm onAdd={props.onAdd}/>
     </Modal.Content>
