@@ -3,17 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-<<<<<<< HEAD
-import firebase from "firebase"
-
-
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-=======
 import firebase from 'firebase';
 
 var firebaseConfig = {
->>>>>>> b691989685111dc87693cd168912a011a3b60d56
     apiKey: "AIzaSyCZpkhY-UUq27S_GferQx06LjUSvoCHXrk",
     authDomain: "fantasyapp-9473b.firebaseapp.com",
     databaseURL: "https://fantasyapp-9473b.firebaseio.com",
@@ -24,14 +16,8 @@ var firebaseConfig = {
     measurementId: "G-EP1ZJ1HTXV"
   };
   // Initialize Firebase
-<<<<<<< HEAD
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
-=======
   
 firebase.initializeApp(firebaseConfig);
->>>>>>> b691989685111dc87693cd168912a011a3b60d56
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
