@@ -14,3 +14,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.ui.avatar.image {
+  width: 3em;
+  height: 3em;
+  margin-top: 0.05em;
+}

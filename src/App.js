@@ -1,41 +1,28 @@
 import React from 'react';
+import {BrowserRouter as Router} from "react-router-dom";
+
 import Navbar from './navbar/Navbar';
-import { BrowserRouter as Router } from "react-router-dom";
-import firebaseConfig from './firebase/firebaseConfig';
-import withFirebaseAuth from 'react-with-firebase-auth'
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
 
+class App extends React.Component {
+  state = {
+    avatarUrl: ''
+  };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const firebaseAppAuth = firebaseApp.auth();
-
-const providers = {
-  googleProvider: new firebase.auth.GoogleAuthProvider(),
-};
-
-// const providers = firebase.auth.EmailAuthProvider.credential(
-//   email,
-//   password
-// );
-
-export class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
+  handleOnAvatarUpdate = (url) => {
+      this.setState({
+          avatarUrl: url
+      })
+  };
 
   render() {
     return (
     <Router>
-      <Navbar />
+      <Navbar 
+        avatarUrl={this.state.avatarUrl}
+        onAvatarUpdate={this.handleOnAvatarUpdate}
+      />
     </Router>
-    )
-  }
-}
+  );
+}};
 
-
-export default withFirebaseAuth({
-  providers,
-  firebaseAppAuth,
-})(App);
+export default App;
