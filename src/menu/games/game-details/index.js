@@ -9,9 +9,12 @@ export class GameDetails extends React.Component {
     fetch(
       `https://fantasyapp-9473b.firebaseio.com/plays/${this.props.gameid}.json`,
       {
-        method: "DELETE"
+        method: "DELETE",
+        body: JSON.stringify(this.props.game)
       }
-    ).then(this.props.onAdd());
+    ).then(()=>{
+      this.props.onDelete()
+    })
   };
 
   render() {

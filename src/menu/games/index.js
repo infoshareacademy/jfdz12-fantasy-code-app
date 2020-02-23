@@ -42,6 +42,9 @@ export class GameCardColection extends React.Component {
   handleOnAdd = () => {
     this.fetchPlaysData();
   };
+  handleOnDelete=()=>{
+  this.fetchPlaysData();
+  }
   fetchPlaysData() {
     fetch("https://fantasyapp-9473b.firebaseio.com/plays.json")
       .then(resp => resp.json())
@@ -65,7 +68,7 @@ export class GameCardColection extends React.Component {
 
   render() {
     console.log(this.state.games)
-    const filteredGames = this.state.games
+    const filteredGames = this.state.games.filter(game=> Object.keys(game).includes("title"))
       .filter(game =>
         game.title.toLowerCase().includes(this.state.sortByName.toLowerCase())
       )
@@ -117,7 +120,8 @@ export class GameCardColection extends React.Component {
                 {filteredGames.length > 0 ? (
                   filteredGames.map(game => (
                     <GameCard
-                      onAdd={this.handleOnAdd}
+                      game={game}
+                      onDelete={this.handleOnDelete}
                       gameid={game.id}
                       key={game.id}
                       title={game.title}
