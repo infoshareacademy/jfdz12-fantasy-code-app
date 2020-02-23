@@ -16,7 +16,7 @@ render(){
             <SemanticDatepicker  label="Search By Date"onChange={this.props.onChange}/>
             <div className="ui grid">
               <span className="radio-label centered row">Hide Full games</span>
-              <Radio className="centered column" style={{top: "-15px", left: "-15px"}} toggle onChange={this.props.onSlide}/>
+              <Radio color={"yellow"} className="centered column" style={{top: "-15px", left: "-15px"}} toggle onChange={this.props.onSlide}/>
             </div>
           </Form.Group>
           

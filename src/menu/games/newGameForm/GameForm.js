@@ -109,7 +109,7 @@ handleonClick=(event)=>{
           />
         </Form.Group>
         <Form.TextArea name={"description"}  label="Descripton" placeholder="Game Description" value={description} onChange={this.handleOnChange}/>
-        <Form.Button onClick={this.handleonClick}>Create new Game</Form.Button>
+        <Form.Button   onClick={this.handleonClick}>Create new Game</Form.Button>
       </Form>
     );
   }
