@@ -8,7 +8,7 @@ const Navbar = () => {
     const context = useContext(UserContext);
 
     const handleItemClick = (e, { name }) => {
-        context.handleItemClick(name);
+        context.handleItemClick({ name });
     };
 
     const componentDidMount = () => {
@@ -23,7 +23,7 @@ const Navbar = () => {
                     <Menu.Item
                         name='home'
                         active={context.activeItem === 'home'}
-                        onClick={context.handleItemClick}
+                        onClick={handleItemClick}
                     >
                         <Icon name='home' />
                     </Menu.Item>
@@ -32,14 +32,14 @@ const Navbar = () => {
                     <Menu.Item
                         name='games'
                         active={context.activeItem === 'games'}
-                        onClick={context.handleItemClick}
+                        onClick={handleItemClick}
                     />
                 </Link>
                 <Link to="/players">
                     <Menu.Item
                         name='players'
                         active={context.activeItem === 'players'}
-                        onClick={() => context.handleItemClick}
+                        onClick={() => handleItemClick}
                     />
                 </Link>
                 <Menu.Menu position='right' color='blue'>
@@ -56,17 +56,17 @@ const Navbar = () => {
                         </Auth> */}
 
                     {
-                        !!context.state.user
+                        !!context.user
                             ? <>
-                                <Image src={context.state.user.avatar} avatar />
+                                <Image src={context.user.avatar} avatar />
                                 {/* <Link to='/profile'>
-                                        <Menu.Item name={`Hello ${this.state.user.nick}`} />
+                                        <Menu.Item name={`Hello ${this.user.nick}`} />
                                     </Link> */}
                                 <Link to="/profile">
                                     <Menu.Item
-                                        name={`Hello ${context.state.user.nick}`}
+                                        name={`Hello ${context.user.nick}`}
                                         active={context.activeItem === 'profile'}
-                                        onClick={context.handleItemClick}
+                                        onClick={handleItemClick}
                                     />
                                 </Link>
                                 <Button inverted onClick={context.handleSignOut}>Sign out</Button>
@@ -77,10 +77,9 @@ const Navbar = () => {
                                 <Menu.Item
                                     name='login'
                                     handleSubmit={context.handleSubmit}
-                                    redirectToReferrer={context.state.redirectToReferrer}
-                                    user={context.state.user}
+                                    redirectToReferrer={context.redirectToReferrer}
                                     active={context.activeItem === 'login'}
-                                    onClick={context.handleItemClick}
+                                    onClick={handleItemClick}
                                 />
                             </Link>
                     }
