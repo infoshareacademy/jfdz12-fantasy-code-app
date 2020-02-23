@@ -3,6 +3,8 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
+import { DATABASE_URL } from '../home/Home';
+
 const CustomTooltip = ({ active, payload, label }) => {
   if (active) {
     return (
@@ -29,11 +31,19 @@ export default class UsersChart extends PureComponent {
   };
 
   fetchRegisteredUsersData() {
-    fetch("/data/registered-users.json")
+    fetch(`${DATABASE_URL}/data/registered-users.json`)
       .then( response => response.json())
       .then( fetchedData => {
+        const keys = Object.keys(fetchedData);
+        const formattedData = keys.map( key => {
+          return {
+            id: key,
+            ...fetchedData[key],
+          };
+        });
+
         this.setState({
-          registeredUsers: fetchedData,
+          registeredUsers: formattedData,
           isLoading: false,
           hasError: false,
           error: '',

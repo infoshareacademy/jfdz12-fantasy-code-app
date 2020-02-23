@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell, Legend, Sector, ResponsiveContainer } from 'recharts';
 
+import { DATABASE_URL } from '../home/Home'; 
+
 const COLORS = ['#eddaa6', '#00E49F', '#f2d43f', '#82ca9d'];
 const RADIAN = Math.PI / 180;
 
@@ -19,11 +21,19 @@ export default class GamesChart extends PureComponent {
   };
 
   fetchPlayedGamesData() {
-    return fetch("/data/played-games.json")
+    return fetch(`${DATABASE_URL}/data/played-games.json`)
       .then( response => response.json())
       .then( fetchedData => {
+        const keys = Object.keys(fetchedData);
+        const formattedData = keys.map(key => {
+            return {
+                id: key,
+                ...fetchedData[key]
+            }
+        });
+        
         this.setState({
-          playedGames: fetchedData,
+          playedGames: formattedData,
           isLoading: false,
           hasError: false,
           error: '',
@@ -38,10 +48,18 @@ export default class GamesChart extends PureComponent {
   };
 
   fetchKindsOfGamesData() {
-    return fetch("/data/kinds-of-games.json")
+    return fetch(`${DATABASE_URL}/data/kind-of-games.json`)
       .then( response => response.json())
       .then( fetchedData => {
-        const kindsOfGamesWithCapitalizedFirstLetter = fetchedData.map( kind => {
+        const keys = Object.keys(fetchedData);
+        const formattedData = keys.map(key => {
+            return {
+                id: key,
+                ...fetchedData[key]
+            }
+        });
+        
+        const kindsOfGamesWithCapitalizedFirstLetter = formattedData.map( kind => {
             const kindName = kind.kindName;
             const kindNameCapitalized = kindName.charAt(0).toUpperCase() + kindName.slice(1);
             return {
