@@ -56,7 +56,7 @@ class UserContextProvider extends React.Component {
         this.setState({
             redirectToReferrer: true
         });
-        console.log('proba logowania')
+        console.log(this.state.user)
     }
 
     handleChange = (e) => {
@@ -65,11 +65,6 @@ class UserContextProvider extends React.Component {
         this.setState({
             [name]: value
         });
-        console.log(this.state)
-    }
-
-    checkUser = () => {
-        console.log(this.state.user)
     }
 
     getAvatarUrl = () => {

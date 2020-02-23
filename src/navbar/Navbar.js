@@ -8,14 +8,13 @@ const Navbar = () => {
     const context = useContext(UserContext);
 
     const handleItemClick = (e, { name }) => {
-        context.handleItemClick({ name });
+        context.handleItemClick(e, { name });
     };
 
     const componentDidMount = () => {
         context.componentDidMount();
     };
 
-    console.log(context)
     return (
         <Container>
             <Menu pointing secondary size='massive' color='blue'>
@@ -43,25 +42,11 @@ const Navbar = () => {
                     />
                 </Link>
                 <Menu.Menu position='right' color='blue'>
-                    {/* <Button inverted onClick={() => context.checkUser}>Check User</Button> */}
-
-                    {/* <Auth>
-                            <Link to="/login">
-                                <Menu.Item
-                                    name='login'
-                                    active={activeItem === 'login'}
-                                    onClick={this.handleItemClick}
-                                />
-                            </Link>
-                        </Auth> */}
 
                     {
                         !!context.user
                             ? <>
                                 <Image src={context.user.avatar} avatar />
-                                {/* <Link to='/profile'>
-                                        <Menu.Item name={`Hello ${this.user.nick}`} />
-                                    </Link> */}
                                 <Link to="/profile">
                                     <Menu.Item
                                         name={`Hello ${context.user.nick}`}
