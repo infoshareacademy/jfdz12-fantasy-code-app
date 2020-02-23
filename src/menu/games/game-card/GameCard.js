@@ -22,6 +22,8 @@ export default function GameCard(props){
               Quick Join!
             </Button>
            <GameDetails
+           game={props.game}
+           onDelete={props.onDelete}
            onAdd={props.onAdd} 
             gameid={props.gameid}
             title={props.title}
