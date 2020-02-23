@@ -8,22 +8,17 @@ export default function GameCard(props){
         <Card.Content>
           <Card.Header textAlign="center">{props.title}</Card.Header>
           <Divider/>
-              <Card.Meta >{props.localizationCity}</Card.Meta>
-              <Card.Meta>{props.localizationPlace}</Card.Meta>
-              <Card.Meta>{props.date}</Card.Meta>
-              <Card.Meta>{props.playerCur} / {props.playerMax} </Card.Meta>
+              <Card.Meta>{props.localization}</Card.Meta>
           <Card.Description>
                 
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button positive>
-              Quick Join!
+            <Button basic color='green'>
+              Approve
             </Button>
-           <GameDetails
-           onAdd={props.onAdd} 
-            gameid={props.gameid}
+           <GameDetails 
             title={props.title}
             localization={props.localization}
             date={props.date}
