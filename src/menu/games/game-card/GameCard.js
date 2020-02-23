@@ -4,9 +4,9 @@ import {GameDetails} from "../game-details/index.js";
 
 export default function GameCard(props){
     return(
-        <Card >
-        <Card.Content>
-          <Card.Header textAlign="center">{props.title}</Card.Header>
+        <Card color={"yellow"}>
+        <Card.Content >
+          <Card.Header  textAlign="center">{props.title}</Card.Header>
           <Divider/>
               <Card.Meta >{props.localizationCity}</Card.Meta>
               <Card.Meta>{props.localizationPlace}</Card.Meta>
@@ -18,7 +18,7 @@ export default function GameCard(props){
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button positive>
+            <Button color={"yellow"}>
               Quick Join!
             </Button>
            <GameDetails
