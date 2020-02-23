@@ -1,7 +1,8 @@
 import React from 'react';
-import firebase from 'firebase';
-import { Form, Segment } from 'semantic-ui-react';
+import {Redirect} from 'react-router';
+import { Form } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
+import Home from '../home/Home';
 
 
 
@@ -10,55 +11,21 @@ import { Link } from "react-router-dom";
 export class LoginPage extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
-    }
-
-    handleChange = (e) => {
-        const value = e.target.value;
-        const name = e.target.name;
-        this.setState({
-            [name]: value
-        })
-    }
-
-    handleSubmit = () => {
-        const email = this.state.email;
-        const password = this.state.password;
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-        });
-
-    }
-
-    componentDidMount() {
-        const authRef = firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                console.log(user)
-            } else {
-                console.log('not logged')
-            }
-        });
-
-        this.setState({
-            ref: authRef
-        })
-    }
-
-    componentWillUnmount() {
-        if(this.state.ref) {
-            this.state.ref();
-        }
     }
 
     render() {
+
+        if (this.props.redirectToReferrer === true) {
+            return <Redirect exact to="/" component={Home}/>
+        }
+        
         return (
             <div>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.props.handleSubmit}>
                     <Form.Input
                         // error={{ content: 'Please enter your first name', pointing: 'below' }}
                         fluid
-                        onChange={this.handleChange}
+                        onChange={this.props.handleChange}
                         label='Email'
                         placeholder='Email'
                         id='form-input-email'
@@ -68,7 +35,7 @@ export class LoginPage extends React.Component {
                     <Form.Input
                         // error={{ content: 'Please enter your first name', pointing: 'below' }}
                         fluid
-                        onChange={this.handleChange}
+                        onChange={this.props.handleChange}
                         label='Password'
                         placeholder='Password'
                         id='form-input-password'

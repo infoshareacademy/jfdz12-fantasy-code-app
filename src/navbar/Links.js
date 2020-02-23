@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router';
 import { GameCardColection } from "../menu/games/index";
 import Home from '../menu/home/Home';
-import { PlayerList } from '../menu/PLayerList';
+import { PlayerList } from '../menu/player-list/PLayerList';
 import { LoginPage } from '../menu/login/LoginPage';
 import { RegisterPage } from '../menu/login/RegisterPage';
 

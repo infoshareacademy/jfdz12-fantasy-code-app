@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from './navbar/Navbar';
 import { BrowserRouter as Router } from "react-router-dom";
 import firebaseConfig from './firebase/firebaseConfig';
-import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -10,20 +9,15 @@ import 'firebase/auth';
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const firebaseAppAuth = firebaseApp.auth();
 
-const providers = {
-  googleProvider: new firebase.auth.GoogleAuthProvider(),
-};
-
-// const providers = firebase.auth.EmailAuthProvider.credential(
-//   email,
-//   password
-// );
-
 export class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
   }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => { this.setState({ user }) });
+  } 
 
   render() {
     return (
@@ -34,8 +28,4 @@ export class App extends React.Component {
   }
 }
 
-
-export default withFirebaseAuth({
-  providers,
-  firebaseAppAuth,
-})(App);
+export default App;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Icon, Image, Segment, Dimmer, Loader, Container } from 'semantic-ui-react';
-import PlayersFilter from './player-list/players-filter/PlayersFilter';
+import PlayersFilter from './players-filter/PlayersFilter';
 
 
 export class PlayerList extends React.Component {
@@ -57,7 +57,7 @@ export class PlayerList extends React.Component {
                         <Card.Content>
                             <Card.Header>{player.nick}</Card.Header>
                             <Card.Description>
-                                {player.nick[0].toUpperCase() + player.nick.slice(1)}
+                                {player.nick[0].toUpperCase() + player.nick.slice(1) + ' '}
                                 is a {player.class[0].toLowerCase() + player.class.slice(1) + " "}
                                 living in {player.city}.
                   </Card.Description>
