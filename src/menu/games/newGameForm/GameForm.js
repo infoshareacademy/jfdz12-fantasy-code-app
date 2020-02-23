@@ -1,5 +1,6 @@
 import React from "react";
 import { Form } from 'semantic-ui-react'
+import uid from "uid"
 
 const optionsPlayers = [
     { key: '1', text: '1', value: 1 },
@@ -27,7 +28,8 @@ const optionsReqLVL= [
     date:"",
     palyer:{max:0,current:0},
     ReqLevelID: 0,
-    description:""
+    description:"",
+    id:uid
   }
 
 export default class GameForm extends React.Component {

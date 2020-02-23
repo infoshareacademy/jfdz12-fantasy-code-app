@@ -116,6 +116,7 @@ export class GameCardColection extends React.Component {
                 {filteredGames.length > 0 ? (
                   filteredGames.map(game => (
                     <GameCard
+                      gameid={game.id}
                       key={game.id}
                       title={game.title}
                       localizationCity={game.localization.city}

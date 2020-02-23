@@ -22,6 +22,7 @@ export default function GameCard(props){
               Quick Join!
             </Button>
            <GameDetails 
+            gameid={props.gameid}
             title={props.title}
             localization={props.localization}
             date={props.date}
