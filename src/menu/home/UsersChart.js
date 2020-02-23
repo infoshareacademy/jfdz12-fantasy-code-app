@@ -74,7 +74,7 @@ export default class UsersChart extends PureComponent {
     if (this.state.hasError) {
       return (
         <div>
-          Error! {this.state.error}
+          Error! {/*this.state.error*/}
         </div>
       );
     };
