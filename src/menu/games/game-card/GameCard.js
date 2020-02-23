@@ -21,7 +21,8 @@ export default function GameCard(props){
             <Button positive>
               Quick Join!
             </Button>
-           <GameDetails 
+           <GameDetails
+           onAdd={props.onAdd} 
             gameid={props.gameid}
             title={props.title}
             localization={props.localization}

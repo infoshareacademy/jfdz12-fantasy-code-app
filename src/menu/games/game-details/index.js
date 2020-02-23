@@ -5,14 +5,13 @@ export class GameDetails extends React.Component {
   // `${BASE_URL}/burgers/${this.props.burger.id}.json`
 
   removeGame = () => {
-    console.log(this.props.gameid);
+    console.log(this.props);
     fetch(
-      `https://fantasyapp-9473b.firebaseio.com/plays/${this.props.gameid -1}.json`,
+      `https://fantasyapp-9473b.firebaseio.com/plays/${this.props.gameid}.json`,
       {
-        method: "DELETE",
-        body: JSON.stringify(this.props.gameid)
+        method: "DELETE"
       }
-    ).then(()=>console.log((`https://fantasyapp-9473b.firebaseio.com/plays/${this.props.gameid}/.json`)));
+    ).then(this.props.onAdd());
   };
 
   render() {
